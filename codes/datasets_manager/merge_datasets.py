@@ -36,7 +36,7 @@ if df_list:
     after_dedup = merged_df.shape[0]
 
     # 병합된 CSV 저장 (파일명에 날짜 및 시간 추가)
-    output_file = os.path.join(directory, f"wifi_rssi_log_{current_time}.csv")
+    output_file = os.path.join(directory, f"wifi_rssi_log_merged_{current_time}.csv")
     merged_df.to_csv(output_file, index=False, encoding="utf-8")
 
     print(f"\n병합 완료: {output_file}")
