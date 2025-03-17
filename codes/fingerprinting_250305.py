@@ -53,6 +53,7 @@ def apply_kalman_filter(rssi_values):
 def preprocess_data(df):
     location_encoder = LabelEncoder()
     df["location_encoded"] = location_encoder.fit_transform(df["Location"])
+    # df["location_encoded"] = location_encoder.fit_transform(df["Location"]) + 1
 
     mac_encoder = LabelEncoder()
     df["mac_encoded"] = mac_encoder.fit_transform(df["MAC"])
@@ -77,18 +78,36 @@ def preprocess_data(df):
 def create_dataset(df, mac_encoder):
     grouped = df.groupby(["Time", "location_encoded"])
     X_list, y_list = [], []
-    max_ap = 70
+    # max_ap = 70
 
+    # for (time, location), group in grouped:
+    #     mac_indices = mac_encoder.transform(group["MAC"])
+    #     distances = group["distance"].values
+
+    #     if len(distances) < max_ap:
+    #         pad_size = max_ap - len(distances)
+    #         mac_indices = np.pad(
+    #             mac_indices, (0, pad_size), constant_values=-1)
+    #         distances = np.pad(distances, (0, pad_size), constant_values=0)
+
+    #     elif len(distances) > max_ap:
+    #         mac_indices = mac_indices[:max_ap]
+    #         distances = distances[:max_ap]
+
+    #     feature_vector = np.column_stack([mac_indices, distances])
+    #     X_list.append(feature_vector)
+    #     y_list.append(location)
+
+    max_ap = 70  # 최대 AP 수
     for (time, location), group in grouped:
-        mac_indices = mac_encoder.transform(group["MAC"])
+        mac_indices = mac_encoder.transform(group["MAC"]) + 1  # +1 padding 대비
         distances = group["distance"].values
 
         if len(distances) < max_ap:
             pad_size = max_ap - len(distances)
-            mac_indices = np.pad(
-                mac_indices, (0, pad_size), constant_values=-1)
+            mac_indices = np.pad(mac_indices, (0, pad_size),
+                                 constant_values=0)  # padding = 0
             distances = np.pad(distances, (0, pad_size), constant_values=0)
-
         elif len(distances) > max_ap:
             mac_indices = mac_indices[:max_ap]
             distances = distances[:max_ap]
@@ -97,8 +116,8 @@ def create_dataset(df, mac_encoder):
         X_list.append(feature_vector)
         y_list.append(location)
 
-    X = np.array(X_list)
-    y = np.array(y_list)
+        X = np.array(X_list)
+        y = np.array(y_list)
     return X, y
 
 # PyTorch Dataset 정의
@@ -119,11 +138,37 @@ class WifiDataset(Dataset):
 # CNN + Embedding 모델 정의
 
 
+# class WifiCNN(nn.Module):
+#     def __init__(self, num_ap, num_classes, num_mac):
+#         super(WifiCNN, self).__init__()
+#         self.embedding = nn.Embedding(
+#             num_embeddings=num_mac, embedding_dim=8, padding_idx=-1)
+#         self.conv1 = nn.Conv1d(
+#             in_channels=9, out_channels=32, kernel_size=3, padding=1)
+#         self.conv2 = nn.Conv1d(32, 64, kernel_size=3, padding=1)
+#         self.fc1 = nn.Linear(64 * num_ap, 128)
+#         self.fc2 = nn.Linear(128, num_classes)
+#         self.relu = nn.ReLU()
+
+#     def forward(self, x, mac):
+#         mac_embed = self.embedding(mac)
+#         x = torch.cat([x.unsqueeze(2), mac_embed], dim=2)
+#         x = x.permute(0, 2, 1)
+#         x = self.relu(self.conv1(x))
+#         x = self.relu(self.conv2(x))
+#         x = x.view(x.size(0), -1)
+#         x = self.relu(self.fc1(x))
+#         x = self.fc2(x)
+#         return x
+
 class WifiCNN(nn.Module):
     def __init__(self, num_ap, num_classes, num_mac):
         super(WifiCNN, self).__init__()
         self.embedding = nn.Embedding(
-            num_embeddings=num_mac, embedding_dim=8, padding_idx=-1)
+            num_embeddings=num_mac + 1,  # padding 포함
+            embedding_dim=8,
+            padding_idx=0  # padding index
+        )
         self.conv1 = nn.Conv1d(
             in_channels=9, out_channels=32, kernel_size=3, padding=1)
         self.conv2 = nn.Conv1d(32, 64, kernel_size=3, padding=1)
@@ -171,7 +216,7 @@ def train_model(model, train_loader, test_loader, num_epochs=100):
             Loss=total_loss / len(train_loader), Accuracy=f"{train_accuracy:.2f}%")
 
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    model_path = f"fp_model_{timestamp}.pt"
+    model_path = f"./models/fp_model_{timestamp}.pt"
     torch.save(model.state_dict(), model_path)
     print(f"모델 가중치 저장됨: {model_path}")
 
@@ -227,7 +272,7 @@ def predict_location(mac_rssi_dict, model_path):
 
 
 def get_latest_model():
-    model_files = glob.glob("fp_model_*.pt")
+    model_files = glob.glob("./models/fp_model_*.pt")
     if not model_files:
         raise FileNotFoundError("저장된 모델이 없습니다.")
     return max(model_files, key=os.path.getctime)
@@ -235,7 +280,7 @@ def get_latest_model():
 
 # 메인 실행 코드
 if __name__ == "__main__":
-    file_path = "./datasets/wifi_rssi_log.csv"
+    file_path = "./datasets/filtered/wifi_rssi_log_filtered_20250315_233054.csv"
     df = load_data(file_path)
     df, location_encoder, mac_encoder = preprocess_data(df)
     X, y = create_dataset(df, mac_encoder)
