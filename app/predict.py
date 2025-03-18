@@ -3,7 +3,7 @@ import numpy as np
 import glob
 import os
 import joblib
-from .model import WifiCNN  # 같은 폴더 내 model.py 사용
+from .model_CNN import WifiCNN  # 같은 폴더 내 model.py 사용
 
 # 최신 파일 가져오기
 def get_latest_file(pattern):
