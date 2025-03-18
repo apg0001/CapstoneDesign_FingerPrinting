@@ -1,4 +1,3 @@
-# CapstoneDesign_FingerPrinting
 # 📍 WiFi 핑거프린팅 실내 위치 추정 API
 
 WiFi AP의 MAC 주소 및 RSSI 데이터를 기반으로 실내 위치를 예측하는 FastAPI 기반 REST API입니다.  
