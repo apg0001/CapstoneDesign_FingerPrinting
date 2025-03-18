@@ -14,7 +14,7 @@ from filterpy.kalman import KalmanFilter
 import datetime
 import glob
 import os
-from model import WifiCNN
+from model_CNN import WifiCNN
 
 # 데이터 로드 및 인코딩 감지
 
@@ -193,7 +193,7 @@ def train_model(model, train_loader, test_loader, num_epochs=100):
             Loss=total_loss / len(train_loader), Accuracy=f"{train_accuracy:.2f}%")
 
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    fp_model_path = f"./finger_printing/models/finger_printing/fp_model_{timestamp}.pt"
+    fp_model_path = f"./finger_printing/models/finger_printing/fp_model_CNN_{timestamp}.pt"
     le_model_path = f"./finger_printing/models/location_encoder/location_encoder_{timestamp}.pkl"
     me_model_path = f"./finger_printing/models/mac_encoder/mac_encoder_{timestamp}.pkl"
     torch.save(model.state_dict(), fp_model_path)
@@ -221,34 +221,34 @@ def evaluate_model(model, test_loader):
 # 모델 불러와서 예측
 
 
-def predict_location(mac_rssi_dict, model_path):
-    P_0 = -40
-    n = 3
+# def predict_location(mac_rssi_dict, model_path):
+#     P_0 = -40
+#     n = 3
 
-    model = WifiCNN(num_ap, num_classes, num_mac)
-    model.load_state_dict(torch.load(model_path))
-    model.eval()
+#     model = WifiCNN(num_ap, num_classes, num_mac)
+#     model.load_state_dict(torch.load(model_path))
+#     model.eval()
 
-    input_vector = np.zeros((num_ap, 2))
+#     input_vector = np.zeros((num_ap, 2))
 
-    for i, (mac, rssi) in enumerate(mac_rssi_dict.items()):
-        if i >= num_ap:
-            break
-        if mac in mac_encoder.classes_:
-            mac_index = mac_encoder.transform([mac])[0]
-            distance = 10 ** ((P_0 - rssi) / (10 * n))
-            input_vector[i] = [mac_index, distance]
+#     for i, (mac, rssi) in enumerate(mac_rssi_dict.items()):
+#         if i >= num_ap:
+#             break
+#         if mac in mac_encoder.classes_:
+#             mac_index = mac_encoder.transform([mac])[0]
+#             distance = 10 ** ((P_0 - rssi) / (10 * n))
+#             input_vector[i] = [mac_index, distance]
 
-    input_tensor = torch.tensor(
-        input_vector[:, 1], dtype=torch.float32).unsqueeze(0)
-    mac_tensor = torch.tensor(
-        input_vector[:, 0], dtype=torch.long).unsqueeze(0)
+#     input_tensor = torch.tensor(
+#         input_vector[:, 1], dtype=torch.float32).unsqueeze(0)
+#     mac_tensor = torch.tensor(
+#         input_vector[:, 0], dtype=torch.long).unsqueeze(0)
 
-    with torch.no_grad():
-        output = model(input_tensor, mac_tensor)
-        _, predicted_index = torch.max(output, 1)
+#     with torch.no_grad():
+#         output = model(input_tensor, mac_tensor)
+#         _, predicted_index = torch.max(output, 1)
 
-    return location_encoder.inverse_transform([predicted_index.item()])[0]
+#     return location_encoder.inverse_transform([predicted_index.item()])[0]
 
 # 최신 모델 불러오기
 

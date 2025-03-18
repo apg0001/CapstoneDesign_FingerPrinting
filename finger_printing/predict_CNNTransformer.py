@@ -2,7 +2,7 @@ import torch
 import numpy as np
 import glob
 import os
-from model import WifiCNN  # 모델 정의
+from model_CNNTransformer import WifiCNNTransformer  # 모델 정의
 import joblib
 
 # 최신 파일 가져오기 (모델 & 인코더 공통 사용)
@@ -19,7 +19,7 @@ def get_latest_file(pattern):
 
 def load_latest_resources(model_dir="./finger_printing/models"):
     model_path = get_latest_file(os.path.join(
-        model_dir + "/finger_printing", "fp_model_*.pt"))
+        model_dir + "/finger_printing", "fp_model_CNNTransformer_*.pt"))
     location_encoder_path = get_latest_file(os.path.join(
         model_dir + "/location_encoder", "location_encoder_*.pkl"))
     mac_encoder_path = get_latest_file(os.path.join(
@@ -41,7 +41,7 @@ def predict_location(mac_rssi_dict, model_path, location_encoder, mac_encoder):
     num_classes = len(location_encoder.classes_)
     num_mac = len(mac_encoder.classes_)
 
-    model = WifiCNN(max_ap, num_classes, num_mac)
+    model = WifiCNNTransformer(max_ap, num_classes, num_mac)
     model.load_state_dict(torch.load(model_path))
     model.eval()
 
