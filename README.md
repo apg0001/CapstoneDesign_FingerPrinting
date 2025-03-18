@@ -27,7 +27,7 @@ WiFi AP의 MAC 주소 및 RSSI 데이터를 기반으로 실내 위치를 예측
 │       ├── fp_model_YYYYMMDD.pt
 │       ├── location_encoder_YYYYMMDD.pkl
 │       └── mac_encoder_YYYYMMDD.pkl
-├── datasets/            # 수집된 WiFi RSSI 데이터
+├── finger_printing/            # 핑거프린팅 관련 코드
 ├── requirements.txt     # Python 의존성 패키지
 └── README.md
 ```
