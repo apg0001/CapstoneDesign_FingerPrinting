@@ -22,7 +22,7 @@ WiFi AP의 MAC 주소 및 RSSI 데이터를 기반으로 실내 위치를 예측
 ├── app/
 │   ├── main.py          # FastAPI 서버 실행 파일
 │   ├── model.py         # PyTorch CNN + Embedding 모델 정의
-│   ├── utils.py         # 모델, 인코더 불러오기 및 예측 함수
+│   ├── predict.py         # 모델, 인코더 불러오기 및 예측 함수
 │   └── models/          # 학습된 모델 및 인코더 저장 폴더
 │       ├── fp_model_YYYYMMDD.pt
 │       ├── location_encoder_YYYYMMDD.pkl
