@@ -193,9 +193,9 @@ def train_model(model, train_loader, test_loader, num_epochs=100):
             Loss=total_loss / len(train_loader), Accuracy=f"{train_accuracy:.2f}%")
 
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    fp_model_path = f"./models/finger_printing/fp_model_{timestamp}.pt"
-    le_model_path = f"./models/location_encoder/location_encoder_{timestamp}.pkl"
-    me_model_path = f"./models/mac_encoder/mac_encoder_{timestamp}.pkl"
+    fp_model_path = f"./finger_printing/models/finger_printing/fp_model_{timestamp}.pt"
+    le_model_path = f"./finger_printing/models/location_encoder/location_encoder_{timestamp}.pkl"
+    me_model_path = f"./finger_printing/models/mac_encoder/mac_encoder_{timestamp}.pkl"
     torch.save(model.state_dict(), fp_model_path)
     # 학습 코드에서
     joblib.dump(location_encoder, le_model_path)
@@ -262,7 +262,7 @@ def predict_location(mac_rssi_dict, model_path):
 
 # 메인 실행 코드
 if __name__ == "__main__":
-    file_path = "./datasets/filtered/wifi_rssi_log_filtered_20250315_233054.csv"
+    file_path = "./finger_printing/datasets/filtered/wifi_rssi_log_filtered_20250315_233054.csv"
     df = load_data(file_path)
     df, location_encoder, mac_encoder = preprocess_data(df)
     X, y = create_dataset(df, mac_encoder)
