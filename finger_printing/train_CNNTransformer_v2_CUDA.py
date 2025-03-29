@@ -221,4 +221,4 @@ if __name__ == "__main__":
 
     model = WifiCNNTransformer(X.shape[1], len(set(y)), len(mac_encoder.classes_)).to(device)
     train_model(model, train_loader, val_loader, test_loader,
-                location_encoder=location_encoder, num_epochs=100, early_stop=False)
+                location_encoder=location_encoder, num_epochs=10000, early_stop=False)
