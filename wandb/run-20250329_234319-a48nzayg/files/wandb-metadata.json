@@ -1,0 +1,43 @@
+{
+  "os": "macOS-15.3.2-arm64-arm-64bit",
+  "python": "CPython 3.8.16",
+  "startedAt": "2025-03-29T14:43:19.692911Z",
+  "program": "/Users/gichanpark/Desktop/castone_design/finger_printing/train_CNNTransformer_v2.py",
+  "codePath": "finger_printing/train_CNNTransformer_v2.py",
+  "git": {
+    "remote": "https://github.com/apg0001/CapstoneDesign_FingerPrinting.git",
+    "commit": "dc887d104cf8d6f0577ab314b28add2b89e0b93d"
+  },
+  "email": "apg0001@dgu.ac.kr",
+  "root": "/Users/gichanpark/Desktop/castone_design",
+  "host": "baggichan-ui-MacBookAir.local",
+  "executable": "/opt/homebrew/anaconda3/envs/capstone/bin/python",
+  "codePathLocal": "finger_printing/train_CNNTransformer_v2.py",
+  "cpu_count": 8,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "494384795648",
+      "used": "371875045376"
+    },
+    "/System/Volumes/Data": {
+      "total": "494384795648",
+      "used": "371875045376"
+    }
+  },
+  "memory": {
+    "total": "17179869184"
+  },
+  "cpu": {
+    "count": 8,
+    "countLogical": 8
+  },
+  "apple": {
+    "name": "Apple M2",
+    "ecpuCores": 4,
+    "pcpuCores": 4,
+    "gpuCores": 10,
+    "memoryGb": 16,
+    "ramTotalBytes": "17179869184"
+  }
+}
