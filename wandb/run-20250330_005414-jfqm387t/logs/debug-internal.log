@@ -5,3 +5,6 @@
 {"time":"2025-03-30T00:54:14.945861+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"jfqm387t"}
 {"time":"2025-03-30T00:54:14.945871+09:00","level":"INFO","msg":"sender: started","stream_id":"jfqm387t"}
 {"time":"2025-03-30T00:54:15.286067+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-30T02:00:59.104125+09:00","level":"INFO","msg":"stream: closing","id":"jfqm387t"}
+{"time":"2025-03-30T02:00:59.104154+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-30T02:00:59.105303+09:00","level":"INFO","msg":"Stopped system monitor"}
