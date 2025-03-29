@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/Users/gichanpark/Desktop/castone_design/finger_printing/train_CNNTransformer_v2.py", line 166, in <module>
+    })
+  File "/Users/gichanpark/Desktop/castone_design/finger_printing/train_CNNTransformer_v2.py", line 118, in train_model
+    "model": "WifiCNNTransformer"
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/site-packages/torch/_tensor.py", line 492, in backward
+    torch.autograd.backward(
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/site-packages/torch/autograd/__init__.py", line 251, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/site-packages/wandb/sdk/lib/service_connection.py", line 94, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/site-packages/wandb/sdk/lib/service_connection.py", line 226, in teardown
+    self._router.join()
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/threading.py", line 1011, in join
+    self._wait_for_tstate_lock()
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/threading.py", line 1027, in _wait_for_tstate_lock
+    elif lock.acquire(block, timeout):
+KeyboardInterrupt

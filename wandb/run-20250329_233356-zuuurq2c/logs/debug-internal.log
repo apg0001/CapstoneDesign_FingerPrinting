@@ -1,0 +1,7 @@
+{"time":"2025-03-29T23:33:56.935977+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"/Users/gichanpark/Desktop/castone_design/wandb/run-20250329_233356-zuuurq2c/logs/debug-core.log"}
+{"time":"2025-03-29T23:33:57.044269+09:00","level":"INFO","msg":"created new stream","id":"zuuurq2c"}
+{"time":"2025-03-29T23:33:57.044328+09:00","level":"INFO","msg":"stream: started","id":"zuuurq2c"}
+{"time":"2025-03-29T23:33:57.044341+09:00","level":"INFO","msg":"handler: started","stream_id":"zuuurq2c"}
+{"time":"2025-03-29T23:33:57.044524+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"zuuurq2c"}
+{"time":"2025-03-29T23:33:57.044546+09:00","level":"INFO","msg":"sender: started","stream_id":"zuuurq2c"}
+{"time":"2025-03-29T23:33:57.451891+09:00","level":"INFO","msg":"Starting system monitor"}
