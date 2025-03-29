@@ -341,7 +341,7 @@ def create_dataset(df, mac_encoder, max_ap=100):
 # ---------- 모델 학습 ----------
 
 
-def train_model(model, train_loader, val_loader, test_loader, num_epochs=100, early_stop=True, use_wandb=True):
+def train_model(model, train_loader, val_loader, test_loader,location_encoder, num_epochs=100, early_stop=True, use_wandb=True):
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
@@ -427,12 +427,12 @@ def train_model(model, train_loader, val_loader, test_loader, num_epochs=100, ea
     if use_wandb:
         wandb.finish()
 
-    evaluate_model(model, test_loader)
+    evaluate_model(model, test_loader, location_encoder)
 
 # ---------- 평가 ----------
 
 
-def evaluate_model(model, loader):
+def evaluate_model(model, loader, location_encoder):
     model.eval()
     correct, total = 0, 0
     with torch.no_grad():
@@ -441,6 +441,11 @@ def evaluate_model(model, loader):
             _, pred = torch.max(model(X, M), 1)
             correct += (pred == y).sum().item()
             total += y.size(0)
+            for p, y in zip(pred, y):
+                if (p != y):
+                    pred_label = location_encoder.inverse_transform([p.item()])[0]
+                    true_label = location_encoder.inverse_transform([y.item()])[0]
+                    print(f"predicted: {pred_label}, y: {true_label}")
     print(f"Test Accuracy: {100 * correct / total:.2f}%")
 
 
@@ -462,4 +467,4 @@ if __name__ == "__main__":
     model = WifiCNNTransformer(X.shape[1], len(
         set(y)), len(me.classes_)).to(device)
     train_model(model, train_loader, val_loader, test_loader,
-                early_stop=False, num_epochs=100)
+                early_stop=False, num_epochs=100, location_encoder=le)
