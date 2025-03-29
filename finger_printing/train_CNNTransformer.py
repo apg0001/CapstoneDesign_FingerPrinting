@@ -181,7 +181,8 @@ def evaluate_model(model, test_loader, location_encoder):
 
 # 메인 실행 코드
 if __name__ == "__main__":
-    file_path = "./finger_printing/datasets/filtered/wifi_rssi_log_filtered_20250315_233054.csv"
+    # file_path = "./finger_printing/datasets/filtered/wifi_rssi_log_filtered_20250315_233054.csv"
+    file_path = "./finger_printing/datasets/merged/wifi_rssi_log_merged_20250329_224816.csv"
     df = load_data(file_path)
     df, location_encoder, mac_encoder = preprocess_data(df)
     X, y = create_dataset(df, mac_encoder)
