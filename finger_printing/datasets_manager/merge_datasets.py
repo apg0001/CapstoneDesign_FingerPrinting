@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 
 # 병합할 CSV 파일이 있는 디렉토리 경로
-directory = "./datasets"  # 원하는 디렉토리로 변경
+directory = "./finger_printing/datasets/raw"  # 원하는 디렉토리로 변경
 
 # 현재 날짜 및 시간 가져오기
 current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -36,7 +36,8 @@ if df_list:
     after_dedup = merged_df.shape[0]
 
     # 병합된 CSV 저장 (파일명에 날짜 및 시간 추가)
-    output_file = os.path.join(directory, f"wifi_rssi_log_merged_{current_time}.csv")
+    merged_directory = "./finger_printing/datasets/merged"
+    output_file = os.path.join(merged_directory, f"wifi_rssi_log_merged_{current_time}.csv")
     merged_df.to_csv(output_file, index=False, encoding="utf-8")
 
     print(f"\n병합 완료: {output_file}")
