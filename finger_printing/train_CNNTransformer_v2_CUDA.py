@@ -480,6 +480,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"✅ Using device: {device}")
 
 # ---------- 칼만 필터 ----------
+
+
 def apply_kalman_filter(rssi_values):
     kf = KalmanFilter(dim_x=1, dim_z=1)
     kf.x = np.array([[rssi_values.iloc[0]]])
@@ -495,6 +497,8 @@ def apply_kalman_filter(rssi_values):
     return np.array(filtered)
 
 # ---------- 전처리 ----------
+
+
 def preprocess_data(df, rssi_threshold=-95):
     df = df[df["RSSI"] > rssi_threshold].copy()
 
@@ -504,7 +508,8 @@ def preprocess_data(df, rssi_threshold=-95):
     mac_encoder = LabelEncoder()
     df["mac_encoded"] = mac_encoder.fit_transform(df["MAC"])
 
-    df["rssi_filtered"] = df.groupby("MAC")["RSSI"].transform(apply_kalman_filter)
+    df["rssi_filtered"] = df.groupby(
+        "MAC")["RSSI"].transform(apply_kalman_filter)
     df["rssi_weighted"] = df.groupby("MAC")["rssi_filtered"].transform(
         lambda x: np.average(x, weights=np.abs(x))
     )
@@ -521,6 +526,8 @@ def preprocess_data(df, rssi_threshold=-95):
     return df, location_encoder, mac_encoder
 
 # ---------- Dataset ----------
+
+
 class WifiDataset(Dataset):
     def __init__(self, X, y):
         self.rssi = torch.tensor(X[:, :, 1], dtype=torch.float32)
@@ -534,6 +541,8 @@ class WifiDataset(Dataset):
         return len(self.rssi)
 
 # ---------- Dataset 생성 ----------
+
+
 def create_dataset(df, mac_encoder, max_ap=100):
     grouped = df.groupby(["Time", "location_encoded"])
     X_list, y_list = [], []
@@ -556,6 +565,8 @@ def create_dataset(df, mac_encoder, max_ap=100):
     return np.array(X_list), np.array(y_list)
 
 # ---------- 모델 학습 ----------
+
+
 def train_model(model, train_loader, val_loader, test_loader, location_encoder, num_epochs=100, early_stop=True, use_wandb=True, use_scheduler=True):
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)
@@ -633,7 +644,8 @@ def train_model(model, train_loader, val_loader, test_loader, location_encoder, 
             wandb.log({"Train Loss": train_loss, "Train Acc": train_acc,
                        "Val Loss": val_loss, "Val Acc": val_acc, "epoch": epoch + 1})
 
-        tqdm.write(f"[Epoch {epoch+1}] Train Acc: {train_acc:.2f}% | Val Acc: {val_acc:.2f}%")
+        tqdm.write(
+            f"[Epoch {epoch+1}] Train Acc: {train_acc:.2f}% | Val Acc: {val_acc:.2f}%")
 
         if early_stop:
             if val_loss < best_val_loss:
@@ -660,23 +672,29 @@ def train_model(model, train_loader, val_loader, test_loader, location_encoder, 
     evaluate_model(model, test_loader, location_encoder)
 
 # ---------- 평가 ----------
+
+
 def evaluate_model(model, loader, location_encoder):
     model.eval()
     correct, total = 0, 0
     with torch.no_grad():
         for rssi, mac, labels in loader:
-            rssi, mac, labels = rssi.to(device), mac.to(device), labels.to(device)
+            rssi, mac, labels = rssi.to(device), mac.to(
+                device), labels.to(device)
             _, pred = torch.max(model(rssi, mac), 1)
             correct += (pred == labels).sum().item()
             total += labels.size(0)
 
             for p, y in zip(pred, labels):
                 if p != y:
-                    pred_label = location_encoder.inverse_transform([p.item()])[0]
-                    true_label = location_encoder.inverse_transform([y.item()])[0]
+                    pred_label = location_encoder.inverse_transform([p.item()])[
+                        0]
+                    true_label = location_encoder.inverse_transform([y.item()])[
+                        0]
                     print(f"predicted: {pred_label}, y: {true_label}")
 
     print(f"Test Accuracy: {100 * correct / total:.2f}%")
+
 
 # ---------- 실행 ----------
 if __name__ == "__main__":
@@ -686,14 +704,19 @@ if __name__ == "__main__":
 
     X, y = create_dataset(df, mac_encoder)
     train_X, temp_X, train_y, temp_y = train_test_split(X, y, test_size=0.2)
-    val_X, test_X, val_y, test_y = train_test_split(temp_X, temp_y, test_size=0.5)
+    val_X, test_X, val_y, test_y = train_test_split(
+        temp_X, temp_y, test_size=0.5)
 
     default_batch_size = 4
 
-    train_loader = DataLoader(WifiDataset(train_X, train_y), batch_size=default_batch_size)
-    val_loader = DataLoader(WifiDataset(val_X, val_y), batch_size=default_batch_size)
-    test_loader = DataLoader(WifiDataset(test_X, test_y), batch_size=default_batch_size)
+    train_loader = DataLoader(WifiDataset(
+        train_X, train_y), batch_size=default_batch_size)
+    val_loader = DataLoader(WifiDataset(val_X, val_y),
+                            batch_size=default_batch_size)
+    test_loader = DataLoader(WifiDataset(
+        test_X, test_y), batch_size=default_batch_size)
 
-    model = WifiCNNTransformer(X.shape[1], len(set(y)), len(mac_encoder.classes_)).to(device)
+    model = WifiCNNTransformer(X.shape[1], len(
+        set(y)), len(mac_encoder.classes_)).to(device)
     train_model(model, train_loader, val_loader, test_loader,
                 location_encoder=location_encoder, num_epochs=200, early_stop=False, use_scheduler=True)
