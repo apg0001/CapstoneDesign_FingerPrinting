@@ -688,9 +688,11 @@ if __name__ == "__main__":
     train_X, temp_X, train_y, temp_y = train_test_split(X, y, test_size=0.2)
     val_X, test_X, val_y, test_y = train_test_split(temp_X, temp_y, test_size=0.5)
 
-    train_loader = DataLoader(WifiDataset(train_X, train_y), batch_size=8)
-    val_loader = DataLoader(WifiDataset(val_X, val_y), batch_size=8)
-    test_loader = DataLoader(WifiDataset(test_X, test_y), batch_size=8)
+    default_batch_size = 4
+
+    train_loader = DataLoader(WifiDataset(train_X, train_y), batch_size=default_batch_size)
+    val_loader = DataLoader(WifiDataset(val_X, val_y), batch_size=default_batch_size)
+    test_loader = DataLoader(WifiDataset(test_X, test_y), batch_size=default_batch_size)
 
     model = WifiCNNTransformer(X.shape[1], len(set(y)), len(mac_encoder.classes_)).to(device)
     train_model(model, train_loader, val_loader, test_loader,
