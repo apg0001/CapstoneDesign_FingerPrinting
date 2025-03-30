@@ -127,7 +127,8 @@ def train_model(model, train_loader, val_loader, test_loader, location_encoder, 
     patience, patience_counter = 15, 0
 
     if use_wandb:
-        wandb.init(project="wifi-fingerprinting", name="CNNTransformer")
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        wandb.init(project="wifi-fingerprinting", name=f"CNNTransformer{timestamp}")
         wandb.config.update({
             "epochs": num_epochs,
             "early_stopping": early_stop,
