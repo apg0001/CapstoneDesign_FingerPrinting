@@ -1,0 +1,711 @@
+digraph {
+	graph [size="96.45,96.45"]
+	node [align=left fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	5125628048 [label="
+ (1, 10)" fillcolor=darkolivegreen1]
+	5126002576 [label=AddmmBackward0]
+	5126001760 -> 5126002576
+	5125762400 [label="fc3.bias
+ (10)" fillcolor=lightblue]
+	5125762400 -> 5126001760
+	5126001760 [label=AccumulateGrad]
+	5126001712 -> 5126002576
+	5126001712 [label=ReluBackward0]
+	5126002384 -> 5126001712
+	5126002384 [label=NativeBatchNormBackward0]
+	5126001088 -> 5126002384
+	5126001088 [label=AddmmBackward0]
+	5126000704 -> 5126001088
+	5125761840 [label="fc2.bias
+ (64)" fillcolor=lightblue]
+	5125761840 -> 5126000704
+	5126000704 [label=AccumulateGrad]
+	5126001328 -> 5126001088
+	5126001328 [label=ReluBackward0]
+	5126003872 -> 5126001328
+	5126003872 [label=NativeBatchNormBackward0]
+	5126000752 -> 5126003872
+	5126000752 [label=AddmmBackward0]
+	5126004688 -> 5126000752
+	5125601456 [label="fc1.bias
+ (128)" fillcolor=lightblue]
+	5125601456 -> 5126004688
+	5126004688 [label=AccumulateGrad]
+	5126004640 -> 5126000752
+	5126004640 [label=ViewBackward0]
+	5126004352 -> 5126004640
+	5126004352 [label=NativeLayerNormBackward0]
+	5126004064 -> 5126004352
+	5126004064 [label=NativeLayerNormBackward0]
+	5126003728 -> 5126004064
+	5126003728 [label=AddBackward0]
+	5126003440 -> 5126003728
+	5126003440 [label=NativeLayerNormBackward0]
+	5126003056 -> 5126003440
+	5126003056 [label=AddBackward0]
+	5126002768 -> 5126003056
+	5126002768 [label=NativeLayerNormBackward0]
+	5126002912 -> 5126002768
+	5126002912 [label=AddBackward0]
+	5126002096 -> 5126002912
+	5126002096 [label=NativeLayerNormBackward0]
+	5126002240 -> 5126002096
+	5126002240 [label=AddBackward0]
+	5126001424 -> 5126002240
+	5126001424 [label=NativeLayerNormBackward0]
+	5126001568 -> 5126001424
+	5126001568 [label=AddBackward0]
+	5126001232 -> 5126001568
+	5126001232 [label=NativeLayerNormBackward0]
+	5126000896 -> 5126001232
+	5126000896 [label=AddBackward0]
+	5126001040 -> 5126000896
+	5126001040 [label=NativeLayerNormBackward0]
+	5125639712 -> 5126001040
+	5125639712 [label=AddBackward0]
+	5125639088 -> 5125639712
+	5125639088 [label=NativeLayerNormBackward0]
+	5125638320 -> 5125639088
+	5125638320 [label=AddBackward0]
+	5125637696 -> 5125638320
+	5125637696 [label=PermuteBackward0]
+	5125637024 -> 5125637696
+	5125637024 [label=ReluBackward0]
+	5125637216 -> 5125637024
+	5125637216 [label=ConvolutionBackward0]
+	5125636400 -> 5125637216
+	5125636400 [label=PermuteBackward0]
+	5125639808 -> 5125636400
+	5125639808 [label=CatBackward0]
+	5125639904 -> 5125639808
+	5125639904 [label=EmbeddingBackward0]
+	5125640000 -> 5125639904
+	4852697024 [label="embedding.weight
+ (301, 16)" fillcolor=lightblue]
+	4852697024 -> 5125640000
+	5125640000 [label=AccumulateGrad]
+	5125637264 -> 5125637216
+	5122182256 [label="conv1.weight
+ (32, 17, 3)" fillcolor=lightblue]
+	5122182256 -> 5125637264
+	5125637264 [label=AccumulateGrad]
+	5125637840 -> 5125637216
+	5125600416 [label="conv1.bias
+ (32)" fillcolor=lightblue]
+	5125600416 -> 5125637840
+	5125637840 [label=AccumulateGrad]
+	5125637648 -> 5125638320
+	5125637648 [label=TransposeBackward0]
+	5125636448 -> 5125637648
+	5125636448 [label=ViewBackward0]
+	5125639856 -> 5125636448
+	5125639856 [label=AddmmBackward0]
+	5125640096 -> 5125639856
+	5125602496 [label="transformer.layers.0.self_attn.out_proj.bias
+ (32)" fillcolor=lightblue]
+	5125602496 -> 5125640096
+	5125640096 [label=AccumulateGrad]
+	5125639952 -> 5125639856
+	5125639952 [label=ViewBackward0]
+	5125636592 -> 5125639952
+	5125636592 [label=PermuteBackward0]
+	5125639280 -> 5125636592
+	5125639280 [label=ScaledDotProductFlashAttentionBackward0]
+	5125639376 -> 5125639280
+	5125639376 [label=ViewBackward0]
+	5125639040 -> 5125639376
+	5125639040 [label=TransposeBackward0]
+	5125638656 -> 5125639040
+	5125638656 [label=ViewBackward0]
+	5125638752 -> 5125638656
+	5125638752 [label=SelectBackward0]
+	5125638848 -> 5125638752
+	5125638848 [label=CloneBackward0]
+	5125638416 -> 5125638848
+	5125638416 [label=SqueezeBackward1]
+	5125638032 -> 5125638416
+	5125638032 [label=TransposeBackward0]
+	5125638128 -> 5125638032
+	5125638128 [label=UnsqueezeBackward0]
+	5125638224 -> 5125638128
+	5125638224 [label=ViewBackward0]
+	5125637792 -> 5125638224
+	5125637792 [label=AddBackward0]
+	5125637408 -> 5125637792
+	5125637408 [label=UnsafeViewBackward0]
+	5125637552 -> 5125637408
+	5125637552 [label=MmBackward0]
+	5125637120 -> 5125637552
+	5125637120 [label=ReshapeAliasBackward0]
+	5125636784 -> 5125637120
+	5125636784 [label=TransposeBackward0]
+	5125637696 -> 5125636784
+	5125637600 -> 5125637552
+	5125637600 [label=TBackward0]
+	5125636832 -> 5125637600
+	5125601776 [label="transformer.layers.0.self_attn.in_proj_weight
+ (96, 32)" fillcolor=lightblue]
+	5125601776 -> 5125636832
+	5125636832 [label=AccumulateGrad]
+	5125637360 -> 5125637792
+	5125601856 [label="transformer.layers.0.self_attn.in_proj_bias
+ (96)" fillcolor=lightblue]
+	5125601856 -> 5125637360
+	5125637360 [label=AccumulateGrad]
+	5125639328 -> 5125639280
+	5125639328 [label=ViewBackward0]
+	5125638704 -> 5125639328
+	5125638704 [label=TransposeBackward0]
+	5125638368 -> 5125638704
+	5125638368 [label=ViewBackward0]
+	5125638080 -> 5125638368
+	5125638080 [label=SelectBackward0]
+	5125638848 -> 5125638080
+	5125639664 -> 5125639280
+	5125639664 [label=ViewBackward0]
+	5125637984 -> 5125639664
+	5125637984 [label=TransposeBackward0]
+	5125638176 -> 5125637984
+	5125638176 [label=ViewBackward0]
+	5125639472 -> 5125638176
+	5125639472 [label=SelectBackward0]
+	5125638848 -> 5125639472
+	5125637888 -> 5125639856
+	5125637888 [label=TBackward0]
+	5125639424 -> 5125637888
+	5125602416 [label="transformer.layers.0.self_attn.out_proj.weight
+ (32, 32)" fillcolor=lightblue]
+	5125602416 -> 5125639424
+	5125639424 [label=AccumulateGrad]
+	5125638272 -> 5125639088
+	5125602656 [label="transformer.layers.0.norm1.weight
+ (32)" fillcolor=lightblue]
+	5125602656 -> 5125638272
+	5125638272 [label=AccumulateGrad]
+	5125639136 -> 5125639088
+	5125602736 [label="transformer.layers.0.norm1.bias
+ (32)" fillcolor=lightblue]
+	5125602736 -> 5125639136
+	5125639136 [label=AccumulateGrad]
+	5125638944 -> 5125639712
+	5125638944 [label=ViewBackward0]
+	5125637072 -> 5125638944
+	5125637072 [label=AddmmBackward0]
+	5125640048 -> 5125637072
+	5125602576 [label="transformer.layers.0.linear2.bias
+ (32)" fillcolor=lightblue]
+	5125602576 -> 5125640048
+	5125640048 [label=AccumulateGrad]
+	5125636640 -> 5125637072
+	5125636640 [label=ViewBackward0]
+	5125637744 -> 5125636640
+	5125637744 [label=ReluBackward0]
+	5125637456 -> 5125637744
+	5125637456 [label=ViewBackward0]
+	5125638608 -> 5125637456
+	5125638608 [label=AddmmBackward0]
+	5125636928 -> 5125638608
+	5125602096 [label="transformer.layers.0.linear1.bias
+ (2048)" fillcolor=lightblue]
+	5125602096 -> 5125636928
+	5125636928 [label=AccumulateGrad]
+	5125637504 -> 5125638608
+	5125637504 [label=ViewBackward0]
+	5125639088 -> 5125637504
+	5125639616 -> 5125638608
+	5125639616 [label=TBackward0]
+	5125636496 -> 5125639616
+	5125601616 [label="transformer.layers.0.linear1.weight
+ (2048, 32)" fillcolor=lightblue]
+	5125601616 -> 5125636496
+	5125636496 [label=AccumulateGrad]
+	5125638464 -> 5125637072
+	5125638464 [label=TBackward0]
+	5125636880 -> 5125638464
+	5125602256 [label="transformer.layers.0.linear2.weight
+ (32, 2048)" fillcolor=lightblue]
+	5125602256 -> 5125636880
+	5125636880 [label=AccumulateGrad]
+	5125639568 -> 5126001040
+	5125602816 [label="transformer.layers.0.norm2.weight
+ (32)" fillcolor=lightblue]
+	5125602816 -> 5125639568
+	5125639568 [label=AccumulateGrad]
+	5125639520 -> 5126001040
+	5125602896 [label="transformer.layers.0.norm2.bias
+ (32)" fillcolor=lightblue]
+	5125602896 -> 5125639520
+	5125639520 [label=AccumulateGrad]
+	5126000992 -> 5126000896
+	5126000992 [label=TransposeBackward0]
+	5125638512 -> 5126000992
+	5125638512 [label=ViewBackward0]
+	5125638992 -> 5125638512
+	5125638992 [label=AddmmBackward0]
+	5125637168 -> 5125638992
+	5125759120 [label="transformer.layers.1.self_attn.out_proj.bias
+ (32)" fillcolor=lightblue]
+	5125759120 -> 5125637168
+	5125637168 [label=AccumulateGrad]
+	5125636976 -> 5125638992
+	5125636976 [label=ViewBackward0]
+	5125636160 -> 5125636976
+	5125636160 [label=PermuteBackward0]
+	5125636256 -> 5125636160
+	5125636256 [label=ScaledDotProductFlashAttentionBackward0]
+	5125636352 -> 5125636256
+	5125636352 [label=ViewBackward0]
+	5125758832 -> 5125636352
+	5125758832 [label=TransposeBackward0]
+	5125758592 -> 5125758832
+	5125758592 [label=ViewBackward0]
+	5125758736 -> 5125758592
+	5125758736 [label=SelectBackward0]
+	5122278160 -> 5125758736
+	5122278160 [label=CloneBackward0]
+	5122277488 -> 5122278160
+	5122277488 [label=SqueezeBackward1]
+	5125568064 -> 5122277488
+	5125568064 [label=TransposeBackward0]
+	5112569520 -> 5125568064
+	5112569520 [label=UnsqueezeBackward0]
+	5125567920 -> 5112569520
+	5125567920 [label=ViewBackward0]
+	5126016256 -> 5125567920
+	5126016256 [label=ViewBackward0]
+	5126016448 -> 5126016256
+	5126016448 [label=AddmmBackward0]
+	5126015680 -> 5126016448
+	5125603056 [label="transformer.layers.1.self_attn.in_proj_bias
+ (96)" fillcolor=lightblue]
+	5125603056 -> 5126015680
+	5126015680 [label=AccumulateGrad]
+	5126015632 -> 5126016448
+	5126015632 [label=ViewBackward0]
+	5126015872 -> 5126015632
+	5126015872 [label=TransposeBackward0]
+	5126001040 -> 5126015872
+	5126016832 -> 5126016448
+	5126016832 [label=TBackward0]
+	5126015152 -> 5126016832
+	5125602976 [label="transformer.layers.1.self_attn.in_proj_weight
+ (96, 32)" fillcolor=lightblue]
+	5125602976 -> 5126015152
+	5126015152 [label=AccumulateGrad]
+	5125636304 -> 5125636256
+	5125636304 [label=ViewBackward0]
+	5125758640 -> 5125636304
+	5125758640 [label=TransposeBackward0]
+	5122278112 -> 5125758640
+	5122278112 [label=ViewBackward0]
+	5125568112 -> 5122278112
+	5125568112 [label=SelectBackward0]
+	5122278160 -> 5125568112
+	5125636736 -> 5125636256
+	5125636736 [label=ViewBackward0]
+	5125758784 -> 5125636736
+	5125758784 [label=TransposeBackward0]
+	5125567872 -> 5125758784
+	5125567872 [label=ViewBackward0]
+	5126016400 -> 5125567872
+	5126016400 [label=SelectBackward0]
+	5122278160 -> 5126016400
+	5125639760 -> 5125638992
+	5125639760 [label=TBackward0]
+	5125636208 -> 5125639760
+	5125759040 [label="transformer.layers.1.self_attn.out_proj.weight
+ (32, 32)" fillcolor=lightblue]
+	5125759040 -> 5125636208
+	5125636208 [label=AccumulateGrad]
+	5126000848 -> 5126001232
+	5125759360 [label="transformer.layers.1.norm1.weight
+ (32)" fillcolor=lightblue]
+	5125759360 -> 5126000848
+	5126000848 [label=AccumulateGrad]
+	5126000800 -> 5126001232
+	5125759440 [label="transformer.layers.1.norm1.bias
+ (32)" fillcolor=lightblue]
+	5125759440 -> 5126000800
+	5126000800 [label=AccumulateGrad]
+	5126001184 -> 5126001568
+	5126001184 [label=ViewBackward0]
+	5126000944 -> 5126001184
+	5126000944 [label=AddmmBackward0]
+	5125638800 -> 5126000944
+	5125759280 [label="transformer.layers.1.linear2.bias
+ (32)" fillcolor=lightblue]
+	5125759280 -> 5125638800
+	5125638800 [label=AccumulateGrad]
+	5125639232 -> 5126000944
+	5125639232 [label=ViewBackward0]
+	5125567824 -> 5125639232
+	5125567824 [label=ReluBackward0]
+	5125757296 -> 5125567824
+	5125757296 [label=ViewBackward0]
+	5126016208 -> 5125757296
+	5126016208 [label=AddmmBackward0]
+	5126015008 -> 5126016208
+	5125603216 [label="transformer.layers.1.linear1.bias
+ (2048)" fillcolor=lightblue]
+	5125603216 -> 5126015008
+	5126015008 [label=AccumulateGrad]
+	5126014336 -> 5126016208
+	5126014336 [label=ViewBackward0]
+	5126001232 -> 5126014336
+	5126016880 -> 5126016208
+	5126016880 [label=TBackward0]
+	5126014576 -> 5126016880
+	5125603136 [label="transformer.layers.1.linear1.weight
+ (2048, 32)" fillcolor=lightblue]
+	5125603136 -> 5126014576
+	5126014576 [label=AccumulateGrad]
+	5125640144 -> 5126000944
+	5125640144 [label=TBackward0]
+	5125758928 -> 5125640144
+	5125759200 [label="transformer.layers.1.linear2.weight
+ (32, 2048)" fillcolor=lightblue]
+	5125759200 -> 5125758928
+	5125758928 [label=AccumulateGrad]
+	5126001520 -> 5126001424
+	5125759520 [label="transformer.layers.1.norm2.weight
+ (32)" fillcolor=lightblue]
+	5125759520 -> 5126001520
+	5126001520 [label=AccumulateGrad]
+	5126001472 -> 5126001424
+	5125759600 [label="transformer.layers.1.norm2.bias
+ (32)" fillcolor=lightblue]
+	5125759600 -> 5126001472
+	5126001472 [label=AccumulateGrad]
+	5126001856 -> 5126002240
+	5126001856 [label=TransposeBackward0]
+	5126001664 -> 5126001856
+	5126001664 [label=ViewBackward0]
+	5125636544 -> 5126001664
+	5125636544 [label=AddmmBackward0]
+	5126014960 -> 5125636544
+	5125760080 [label="transformer.layers.2.self_attn.out_proj.bias
+ (32)" fillcolor=lightblue]
+	5125760080 -> 5126014960
+	5126014960 [label=AccumulateGrad]
+	5126014528 -> 5125636544
+	5126014528 [label=ViewBackward0]
+	5126013760 -> 5126014528
+	5126013760 [label=PermuteBackward0]
+	5126013952 -> 5126013760
+	5126013952 [label=ScaledDotProductFlashAttentionBackward0]
+	5126013136 -> 5126013952
+	5126013136 [label=ViewBackward0]
+	5126016976 -> 5126013136
+	5126016976 [label=TransposeBackward0]
+	5126016592 -> 5126016976
+	5126016592 [label=ViewBackward0]
+	5126016688 -> 5126016592
+	5126016688 [label=SelectBackward0]
+	5126016784 -> 5126016688
+	5126016784 [label=CloneBackward0]
+	5126016352 -> 5126016784
+	5126016352 [label=SqueezeBackward1]
+	5126015968 -> 5126016352
+	5126015968 [label=TransposeBackward0]
+	5126016064 -> 5126015968
+	5126016064 [label=UnsqueezeBackward0]
+	5126016160 -> 5126016064
+	5126016160 [label=ViewBackward0]
+	5126015776 -> 5126016160
+	5126015776 [label=ViewBackward0]
+	5126015392 -> 5126015776
+	5126015392 [label=AddmmBackward0]
+	5126015488 -> 5126015392
+	5125759760 [label="transformer.layers.2.self_attn.in_proj_bias
+ (96)" fillcolor=lightblue]
+	5125759760 -> 5126015488
+	5126015488 [label=AccumulateGrad]
+	5126015440 -> 5126015392
+	5126015440 [label=ViewBackward0]
+	5126015584 -> 5126015440
+	5126015584 [label=TransposeBackward0]
+	5126001424 -> 5126015584
+	5126013328 -> 5126015392
+	5126013328 [label=TBackward0]
+	5126014672 -> 5126013328
+	5125759680 [label="transformer.layers.2.self_attn.in_proj_weight
+ (96, 32)" fillcolor=lightblue]
+	5125759680 -> 5126014672
+	5126014672 [label=AccumulateGrad]
+	5126013088 -> 5126013952
+	5126013088 [label=ViewBackward0]
+	5126016640 -> 5126013088
+	5126016640 [label=TransposeBackward0]
+	5126016304 -> 5126016640
+	5126016304 [label=ViewBackward0]
+	5126016016 -> 5126016304
+	5126016016 [label=SelectBackward0]
+	5126016784 -> 5126016016
+	5126014384 -> 5126013952
+	5126014384 [label=ViewBackward0]
+	5126015920 -> 5126014384
+	5126015920 [label=TransposeBackward0]
+	5126016112 -> 5126015920
+	5126016112 [label=ViewBackward0]
+	5126015344 -> 5126016112
+	5126015344 [label=SelectBackward0]
+	5126016784 -> 5126015344
+	5126015824 -> 5125636544
+	5126015824 [label=TBackward0]
+	5126013280 -> 5126015824
+	5125760000 [label="transformer.layers.2.self_attn.out_proj.weight
+ (32, 32)" fillcolor=lightblue]
+	5125760000 -> 5126013280
+	5126013280 [label=AccumulateGrad]
+	5126002192 -> 5126002096
+	5125760320 [label="transformer.layers.2.norm1.weight
+ (32)" fillcolor=lightblue]
+	5125760320 -> 5126002192
+	5126002192 [label=AccumulateGrad]
+	5126002144 -> 5126002096
+	5125760400 [label="transformer.layers.2.norm1.bias
+ (32)" fillcolor=lightblue]
+	5125760400 -> 5126002144
+	5126002144 [label=AccumulateGrad]
+	5126002048 -> 5126002912
+	5126002048 [label=ViewBackward0]
+	5126001616 -> 5126002048
+	5126001616 [label=AddmmBackward0]
+	5125638896 -> 5126001616
+	5125760240 [label="transformer.layers.2.linear2.bias
+ (32)" fillcolor=lightblue]
+	5125760240 -> 5125638896
+	5125638896 [label=AccumulateGrad]
+	5126002288 -> 5126001616
+	5126002288 [label=ViewBackward0]
+	5126015728 -> 5126002288
+	5126015728 [label=ReluBackward0]
+	5126014720 -> 5126015728
+	5126014720 [label=ViewBackward0]
+	5126016544 -> 5126014720
+	5126016544 [label=AddmmBackward0]
+	5126015104 -> 5126016544
+	5125759920 [label="transformer.layers.2.linear1.bias
+ (2048)" fillcolor=lightblue]
+	5125759920 -> 5126015104
+	5126015104 [label=AccumulateGrad]
+	5126014768 -> 5126016544
+	5126014768 [label=ViewBackward0]
+	5126002096 -> 5126014768
+	5126013712 -> 5126016544
+	5126013712 [label=TBackward0]
+	5126014912 -> 5126013712
+	5125759840 [label="transformer.layers.2.linear1.weight
+ (2048, 32)" fillcolor=lightblue]
+	5125759840 -> 5126014912
+	5126014912 [label=AccumulateGrad]
+	5126015200 -> 5126001616
+	5126015200 [label=TBackward0]
+	5126015536 -> 5126015200
+	5125760160 [label="transformer.layers.2.linear2.weight
+ (32, 2048)" fillcolor=lightblue]
+	5125760160 -> 5126015536
+	5126015536 [label=AccumulateGrad]
+	5126002864 -> 5126002768
+	5125760480 [label="transformer.layers.2.norm2.weight
+ (32)" fillcolor=lightblue]
+	5125760480 -> 5126002864
+	5126002864 [label=AccumulateGrad]
+	5126002816 -> 5126002768
+	5125760560 [label="transformer.layers.2.norm2.bias
+ (32)" fillcolor=lightblue]
+	5125760560 -> 5126002816
+	5126002816 [label=AccumulateGrad]
+	5126002720 -> 5126003056
+	5126002720 [label=TransposeBackward0]
+	5126002480 -> 5126002720
+	5126002480 [label=ViewBackward0]
+	5126014864 -> 5126002480
+	5126014864 [label=AddmmBackward0]
+	5126016736 -> 5126014864
+	5125761040 [label="transformer.layers.3.self_attn.out_proj.bias
+ (32)" fillcolor=lightblue]
+	5125761040 -> 5126016736
+	5126016736 [label=AccumulateGrad]
+	5126015056 -> 5126014864
+	5126015056 [label=ViewBackward0]
+	5126014432 -> 5126015056
+	5126014432 [label=PermuteBackward0]
+	5126014144 -> 5126014432
+	5126014144 [label=ScaledDotProductFlashAttentionBackward0]
+	5126014240 -> 5126014144
+	5126014240 [label=ViewBackward0]
+	5126013424 -> 5126014240
+	5126013424 [label=TransposeBackward0]
+	5126013520 -> 5126013424
+	5126013520 [label=ViewBackward0]
+	5126013616 -> 5126013520
+	5126013616 [label=SelectBackward0]
+	5126013184 -> 5126013616
+	5126013184 [label=CloneBackward0]
+	5126012992 -> 5126013184
+	5126012992 [label=SqueezeBackward1]
+	5126016496 -> 5126012992
+	5126016496 [label=TransposeBackward0]
+	5126013808 -> 5126016496
+	5126013808 [label=UnsqueezeBackward0]
+	5126034144 -> 5126013808
+	5126034144 [label=ViewBackward0]
+	5126034240 -> 5126034144
+	5126034240 [label=ViewBackward0]
+	5126034336 -> 5126034240
+	5126034336 [label=AddmmBackward0]
+	5126034432 -> 5126034336
+	5125760720 [label="transformer.layers.3.self_attn.in_proj_bias
+ (96)" fillcolor=lightblue]
+	5125760720 -> 5126034432
+	5126034432 [label=AccumulateGrad]
+	5126034384 -> 5126034336
+	5126034384 [label=ViewBackward0]
+	5126034528 -> 5126034384
+	5126034528 [label=TransposeBackward0]
+	5126002768 -> 5126034528
+	5126033472 -> 5126034336
+	5126033472 [label=TBackward0]
+	5126034672 -> 5126033472
+	5125760640 [label="transformer.layers.3.self_attn.in_proj_weight
+ (96, 32)" fillcolor=lightblue]
+	5125760640 -> 5126034672
+	5126034672 [label=AccumulateGrad]
+	5126014192 -> 5126014144
+	5126014192 [label=ViewBackward0]
+	5126013568 -> 5126014192
+	5126013568 [label=TransposeBackward0]
+	5126013232 -> 5126013568
+	5126013232 [label=ViewBackward0]
+	5126013040 -> 5126013232
+	5126013040 [label=SelectBackward0]
+	5126013184 -> 5126013040
+	5126014048 -> 5126014144
+	5126014048 [label=ViewBackward0]
+	5126013856 -> 5126014048
+	5126013856 [label=TransposeBackward0]
+	5126013472 -> 5126013856
+	5126013472 [label=ViewBackward0]
+	5126034288 -> 5126013472
+	5126034288 [label=SelectBackward0]
+	5126013184 -> 5126034288
+	5126016928 -> 5126014864
+	5126016928 [label=TBackward0]
+	5126014288 -> 5126016928
+	5125760960 [label="transformer.layers.3.self_attn.out_proj.weight
+ (32, 32)" fillcolor=lightblue]
+	5125760960 -> 5126014288
+	5126014288 [label=AccumulateGrad]
+	5126003536 -> 5126003440
+	5125761280 [label="transformer.layers.3.norm1.weight
+ (32)" fillcolor=lightblue]
+	5125761280 -> 5126003536
+	5126003536 [label=AccumulateGrad]
+	5126003488 -> 5126003440
+	5125761360 [label="transformer.layers.3.norm1.bias
+ (32)" fillcolor=lightblue]
+	5125761360 -> 5126003488
+	5126003488 [label=AccumulateGrad]
+	5126003392 -> 5126003728
+	5126003392 [label=ViewBackward0]
+	5126002432 -> 5126003392
+	5126002432 [label=AddmmBackward0]
+	5126003104 -> 5126002432
+	5125761200 [label="transformer.layers.3.linear2.bias
+ (32)" fillcolor=lightblue]
+	5125761200 -> 5126003104
+	5126003104 [label=AccumulateGrad]
+	5126014480 -> 5126002432
+	5126014480 [label=ViewBackward0]
+	5126013664 -> 5126014480
+	5126013664 [label=ReluBackward0]
+	5126034720 -> 5126013664
+	5126034720 [label=ViewBackward0]
+	5126034192 -> 5126034720
+	5126034192 [label=AddmmBackward0]
+	5126034624 -> 5126034192
+	5125760880 [label="transformer.layers.3.linear1.bias
+ (2048)" fillcolor=lightblue]
+	5125760880 -> 5126034624
+	5126034624 [label=AccumulateGrad]
+	5126034768 -> 5126034192
+	5126034768 [label=ViewBackward0]
+	5126003440 -> 5126034768
+	5126034096 -> 5126034192
+	5126034096 [label=TBackward0]
+	5126034912 -> 5126034096
+	5125760800 [label="transformer.layers.3.linear1.weight
+ (2048, 32)" fillcolor=lightblue]
+	5125760800 -> 5126034912
+	5126034912 [label=AccumulateGrad]
+	5126013904 -> 5126002432
+	5126013904 [label=TBackward0]
+	5126014816 -> 5126013904
+	5125761120 [label="transformer.layers.3.linear2.weight
+ (32, 2048)" fillcolor=lightblue]
+	5125761120 -> 5126014816
+	5126014816 [label=AccumulateGrad]
+	5126003680 -> 5126004064
+	5125761440 [label="transformer.layers.3.norm2.weight
+ (32)" fillcolor=lightblue]
+	5125761440 -> 5126003680
+	5126003680 [label=AccumulateGrad]
+	5126004160 -> 5126004064
+	5125761520 [label="transformer.layers.3.norm2.bias
+ (32)" fillcolor=lightblue]
+	5125761520 -> 5126004160
+	5126004160 [label=AccumulateGrad]
+	5126004016 -> 5126004352
+	5118454576 [label="norm.weight
+ (32)" fillcolor=lightblue]
+	5118454576 -> 5126004016
+	5126004016 [label=AccumulateGrad]
+	5126003968 -> 5126004352
+	5122181936 [label="norm.bias
+ (32)" fillcolor=lightblue]
+	5122181936 -> 5126003968
+	5126003968 [label=AccumulateGrad]
+	5126004592 -> 5126000752
+	5126004592 [label=TBackward0]
+	5126003296 -> 5126004592
+	5121361856 [label="fc1.weight
+ (128, 3200)" fillcolor=lightblue]
+	5121361856 -> 5126003296
+	5126003296 [label=AccumulateGrad]
+	5126001376 -> 5126003872
+	5118336832 [label="bn1.weight
+ (128)" fillcolor=lightblue]
+	5118336832 -> 5126001376
+	5126001376 [label=AccumulateGrad]
+	5126002000 -> 5126003872
+	5118335312 [label="bn1.bias
+ (128)" fillcolor=lightblue]
+	5118335312 -> 5126002000
+	5126002000 [label=AccumulateGrad]
+	5126001280 -> 5126001088
+	5126001280 [label=TBackward0]
+	5126004304 -> 5126001280
+	5125761760 [label="fc2.weight
+ (64, 128)" fillcolor=lightblue]
+	5125761760 -> 5126004304
+	5126004304 [label=AccumulateGrad]
+	5126001952 -> 5126002384
+	5125761920 [label="bn2.weight
+ (64)" fillcolor=lightblue]
+	5125761920 -> 5126001952
+	5126001952 [label=AccumulateGrad]
+	5126001904 -> 5126002384
+	5125762000 [label="bn2.bias
+ (64)" fillcolor=lightblue]
+	5125762000 -> 5126001904
+	5126001904 [label=AccumulateGrad]
+	5126002528 -> 5126002576
+	5126002528 [label=TBackward0]
+	5126004496 -> 5126002528
+	5125762320 [label="fc3.weight
+ (10, 64)" fillcolor=lightblue]
+	5125762320 -> 5126004496
+	5126004496 [label=AccumulateGrad]
+	5126002576 -> 5125628048
+}

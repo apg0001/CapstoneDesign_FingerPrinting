@@ -261,6 +261,7 @@ if __name__ == "__main__":
     from torchviz import make_dot
 
     model = WifiCNNTransformer(num_ap=100, num_classes=10, num_mac=300)
+    model.eval()
     print("\U0001F9E0 모델 구조 요약:")
     summary(model, input_data=(torch.zeros(1, 100), torch.zeros(1, 100, dtype=torch.long)))
 
