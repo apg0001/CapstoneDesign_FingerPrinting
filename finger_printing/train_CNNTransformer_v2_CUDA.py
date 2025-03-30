@@ -124,7 +124,7 @@ def train_model(model, train_loader, val_loader, test_loader, location_encoder, 
 
     best_val_loss = float('inf')
     best_model_state = None
-    patience, patience_counter = 10, 0
+    patience, patience_counter = 15, 0
 
     if use_wandb:
         wandb.init(project="wifi-fingerprinting", name="CNNTransformer")
@@ -260,4 +260,4 @@ if __name__ == "__main__":
     model = WifiCNNTransformer(X.shape[1], len(
         set(y)), len(mac_encoder.classes_)).to(device)
     train_model(model, train_loader, val_loader, test_loader,
-                location_encoder=location_encoder, num_epochs=200, early_stop=False, use_scheduler=True)
+                location_encoder=location_encoder, num_epochs=200, early_stop=True, use_scheduler=True)
