@@ -240,6 +240,7 @@ def evaluate_model(model, loader, location_encoder):
 # ---------- 실행 ----------
 if __name__ == "__main__":
     file_path = "./finger_printing/datasets/merged/wifi_rssi_log_merged_20250329_224816.csv"
+    file_path = "./finger_printing/datasets/augmented/wifi_rssi_log_augmented_20250331_000650.csv"
     df = pd.read_csv(file_path)
     df, location_encoder, mac_encoder = preprocess_data(df)
 
@@ -251,11 +252,11 @@ if __name__ == "__main__":
     default_batch_size = 4
 
     train_loader = DataLoader(WifiDataset(
-        train_X, train_y), batch_size=default_batch_size)
+        train_X, train_y), batch_size=default_batch_size, drop_last=True)
     val_loader = DataLoader(WifiDataset(val_X, val_y),
-                            batch_size=default_batch_size)
+                            batch_size=default_batch_size, drop_last=True)
     test_loader = DataLoader(WifiDataset(
-        test_X, test_y), batch_size=default_batch_size)
+        test_X, test_y), batch_size=default_batch_size, drop_last=True)
 
     model = WifiCNNTransformer(X.shape[1], len(
         set(y)), len(mac_encoder.classes_)).to(device)
