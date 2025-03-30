@@ -205,7 +205,7 @@ def train_model(model, train_loader, val_loader, test_loader, location_encoder, 
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     model_path = f"./finger_printing/models/finger_printing/fp_model_CNNTransformer_{timestamp}.pt"
     torch.save(model.state_dict(), model_path)
-    tqdm.write(f"✅ 모델 저장 완료: {model_path}")
+    tqdm.write(f"모델 저장 완료: {model_path}")
 
     if use_wandb:
         wandb.finish()
