@@ -1,0 +1,16 @@
+{
+  "os": "macOS-15.3.2-arm64-arm-64bit",
+  "python": "CPython 3.8.16",
+  "startedAt": "2025-03-31T05:06:12.018009Z",
+  "program": "/Users/gichanpark/Desktop/castone_design/finger_printing/train_CNNTransformer_sweep.py",
+  "codePath": "finger_printing/train_CNNTransformer_sweep.py",
+  "git": {
+    "remote": "https://github.com/apg0001/CapstoneDesign_FingerPrinting.git",
+    "commit": "d74dac3cc808b0b90d9d0c7fca8e83019634fd89"
+  },
+  "email": "apg0001@dgu.ac.kr",
+  "root": "/Users/gichanpark/Desktop/castone_design",
+  "host": "baggichan-ui-MacBookAir.local",
+  "executable": "/opt/homebrew/anaconda3/envs/capstone/bin/python",
+  "codePathLocal": "finger_printing/train_CNNTransformer_sweep.py"
+}
