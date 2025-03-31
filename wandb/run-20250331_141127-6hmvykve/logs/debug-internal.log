@@ -1,0 +1,9 @@
+{"time":"2025-03-31T14:11:27.484538+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"/Users/gichanpark/Desktop/castone_design/wandb/run-20250331_141127-6hmvykve/logs/debug-core.log"}
+{"time":"2025-03-31T14:11:27.592633+09:00","level":"INFO","msg":"created new stream","id":"6hmvykve"}
+{"time":"2025-03-31T14:11:27.592669+09:00","level":"INFO","msg":"stream: started","id":"6hmvykve"}
+{"time":"2025-03-31T14:11:27.592692+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"6hmvykve"}
+{"time":"2025-03-31T14:11:27.592696+09:00","level":"INFO","msg":"sender: started","stream_id":"6hmvykve"}
+{"time":"2025-03-31T14:11:27.592744+09:00","level":"INFO","msg":"handler: started","stream_id":"6hmvykve"}
+{"time":"2025-03-31T14:11:27.936752+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-31T14:14:13.112653+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-31T14:14:13.113137+09:00","level":"INFO","msg":"Stopped system monitor"}

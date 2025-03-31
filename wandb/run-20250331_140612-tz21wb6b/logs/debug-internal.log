@@ -1,0 +1,16 @@
+{"time":"2025-03-31T14:06:12.022172+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"/Users/gichanpark/Desktop/castone_design/wandb/run-20250331_140612-tz21wb6b/logs/debug-core.log"}
+{"time":"2025-03-31T14:06:12.131975+09:00","level":"INFO","msg":"created new stream","id":"tz21wb6b"}
+{"time":"2025-03-31T14:06:12.132013+09:00","level":"INFO","msg":"stream: started","id":"tz21wb6b"}
+{"time":"2025-03-31T14:06:12.132034+09:00","level":"INFO","msg":"sender: started","stream_id":"tz21wb6b"}
+{"time":"2025-03-31T14:06:12.132023+09:00","level":"INFO","msg":"handler: started","stream_id":"tz21wb6b"}
+{"time":"2025-03-31T14:06:12.132072+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"tz21wb6b"}
+{"time":"2025-03-31T14:06:12.647783+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-31T14:06:12.702629+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-31T14:06:12.702955+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-31T14:06:13.713241+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"updating run config","runtime_seconds":0.410975709},{"desc":"uploading output.log","runtime_seconds":0.152005166,"progress":"932B/932B"},{"desc":"uploading wandb-summary.json","runtime_seconds":0.151992,"progress":"24B/24B"}],"total_operations":3}}
+{"time":"2025-03-31T14:06:14.904765+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-31T14:06:15.249788+09:00","level":"INFO","msg":"stream: closing","id":"tz21wb6b"}
+{"time":"2025-03-31T14:06:15.249843+09:00","level":"INFO","msg":"handler: closed","stream_id":"tz21wb6b"}
+{"time":"2025-03-31T14:06:15.249868+09:00","level":"INFO","msg":"sender: closed","stream_id":"tz21wb6b"}
+{"time":"2025-03-31T14:06:15.249857+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"tz21wb6b"}
+{"time":"2025-03-31T14:06:15.250136+09:00","level":"INFO","msg":"stream: closed","id":"tz21wb6b"}

@@ -1,0 +1,27 @@
+method: random
+metric:
+  name: Val Acc
+  goal: maximize
+
+parameters:
+  embedding_dim:
+    values: [8, 16, 32]
+  transformer_heads:
+    values: [2, 4, 8]
+  transformer_layers:
+    values: [2, 3, 4]
+  dropout_rate:
+    values: [0.1, 0.3, 0.5]
+
+  batch_size:
+    values: [4, 8]
+  learning_rate:
+    values: [0.001, 0.0005, 0.0001]
+  epochs:
+    values: [100, 150, 200, 250, 300]
+  scheduler:
+    values: [true, false]
+  early_stopping:
+    values: [true, false]
+  data_path:
+    value: ./finger_printing/datasets/augmented/wifi_rssi_log_augmented_20250331_000650.csv

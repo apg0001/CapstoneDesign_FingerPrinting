@@ -1,0 +1,16 @@
+{"time":"2025-03-31T13:55:14.822192+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"/Users/gichanpark/Desktop/castone_design/wandb/run-20250331_135514-kkac9g7s/logs/debug-core.log"}
+{"time":"2025-03-31T13:55:14.935023+09:00","level":"INFO","msg":"created new stream","id":"kkac9g7s"}
+{"time":"2025-03-31T13:55:14.935066+09:00","level":"INFO","msg":"stream: started","id":"kkac9g7s"}
+{"time":"2025-03-31T13:55:14.935091+09:00","level":"INFO","msg":"handler: started","stream_id":"kkac9g7s"}
+{"time":"2025-03-31T13:55:14.935082+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"kkac9g7s"}
+{"time":"2025-03-31T13:55:14.935131+09:00","level":"INFO","msg":"sender: started","stream_id":"kkac9g7s"}
+{"time":"2025-03-31T13:55:15.211912+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-31T13:55:30.534796+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-31T13:55:30.535289+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-31T13:55:31.455689+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-31T13:55:31.536752+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading data","runtime_seconds":0.080799584}],"total_operations":1}}
+{"time":"2025-03-31T13:55:31.777602+09:00","level":"INFO","msg":"stream: closing","id":"kkac9g7s"}
+{"time":"2025-03-31T13:55:31.777641+09:00","level":"INFO","msg":"handler: closed","stream_id":"kkac9g7s"}
+{"time":"2025-03-31T13:55:31.777659+09:00","level":"INFO","msg":"sender: closed","stream_id":"kkac9g7s"}
+{"time":"2025-03-31T13:55:31.777653+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"kkac9g7s"}
+{"time":"2025-03-31T13:55:31.777798+09:00","level":"INFO","msg":"stream: closed","id":"kkac9g7s"}

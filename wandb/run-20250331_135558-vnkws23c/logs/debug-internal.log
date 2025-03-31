@@ -1,0 +1,16 @@
+{"time":"2025-03-31T13:55:58.030213+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"/Users/gichanpark/Desktop/castone_design/wandb/run-20250331_135558-vnkws23c/logs/debug-core.log"}
+{"time":"2025-03-31T13:55:58.143613+09:00","level":"INFO","msg":"created new stream","id":"vnkws23c"}
+{"time":"2025-03-31T13:55:58.143656+09:00","level":"INFO","msg":"stream: started","id":"vnkws23c"}
+{"time":"2025-03-31T13:55:58.143679+09:00","level":"INFO","msg":"handler: started","stream_id":"vnkws23c"}
+{"time":"2025-03-31T13:55:58.143673+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"vnkws23c"}
+{"time":"2025-03-31T13:55:58.143704+09:00","level":"INFO","msg":"sender: started","stream_id":"vnkws23c"}
+{"time":"2025-03-31T13:55:58.735218+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-31T13:56:14.201755+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-31T13:56:14.202584+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-31T13:56:15.059682+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-31T13:56:15.210134+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading data","runtime_seconds":0.15016425}],"total_operations":1}}
+{"time":"2025-03-31T13:56:15.346414+09:00","level":"INFO","msg":"stream: closing","id":"vnkws23c"}
+{"time":"2025-03-31T13:56:15.346448+09:00","level":"INFO","msg":"handler: closed","stream_id":"vnkws23c"}
+{"time":"2025-03-31T13:56:15.346463+09:00","level":"INFO","msg":"sender: closed","stream_id":"vnkws23c"}
+{"time":"2025-03-31T13:56:15.346455+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"vnkws23c"}
+{"time":"2025-03-31T13:56:15.3466+09:00","level":"INFO","msg":"stream: closed","id":"vnkws23c"}
