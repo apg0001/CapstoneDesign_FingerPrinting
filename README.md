@@ -1,7 +1,7 @@
 # 📍 WiFi 핑거프린팅 실내 위치 추정 API
 
 WiFi AP의 MAC 주소 및 RSSI 데이터를 기반으로 실내 위치를 예측하는 FastAPI 기반 REST API입니다.  
-사전에 학습된 CNN + Embedding 모델을 통해 WiFi 스캔 데이터를 입력받아 위치를 반환합니다.
+사전에 학습된 CNN + Transformer 모델을 통해 WiFi 스캔 데이터를 입력받아 위치를 반환합니다.
 
 ---
 
@@ -9,9 +9,12 @@ WiFi AP의 MAC 주소 및 RSSI 데이터를 기반으로 실내 위치를 예측
 
 - FastAPI 기반 RESTful API 제공
 - WiFi 스캔 데이터로 실내 위치 예측
-- CNN + Embedding 모델 (PyTorch 기반)
+- CNN + Transformer 모델 (PyTorch 기반)
 - Kalman Filter, Log-distance, KNN Imputer 전처리
 - 최신 모델 & 인코더 자동 불러오기
+- 모델 학습/서빙 코드 통합
+- wandb 기반 하이퍼파라미터 튜닝 (Sweep)
+- 모델/인코더/정규화 파라미터 자동 저장
 - Docker, AWS 배포 지원 예정
 
 ---
@@ -20,15 +23,23 @@ WiFi AP의 MAC 주소 및 RSSI 데이터를 기반으로 실내 위치를 예측
 
 ```
 ├── app/
-│   ├── main.py          # FastAPI 서버 실행 파일
-│   ├── model.py         # PyTorch CNN + Embedding 모델 정의
-│   ├── predict.py         # 모델, 인코더 불러오기 및 예측 함수
-│   └── models/          # 학습된 모델 및 인코더 저장 폴더
-│       ├── fp_model_YYYYMMDD.pt
-│       ├── location_encoder_YYYYMMDD.pkl
-│       └── mac_encoder_YYYYMMDD.pkl
-├── finger_printing/            # 핑거프린팅 관련 코드
-├── requirements.txt     # Python 의존성 패키지
+│   ├── main.py                # FastAPI 서버 실행 파일
+│   ├── model_CNN.py           # CNN + Embedding 모델
+│   ├── model_CNNTransformer.py# CNN + Transformer 모델
+│   ├── predict.py             # 모델, 인코더 불러오기 및 예측 함수
+│   └── models/                # (구버전) 학습된 모델 및 인코더 저장 폴더
+├── finger_printing/
+│   ├── train/                 # 학습 스크립트
+│   │   ├── train_CNNTransformer.py
+│   │   └── train_CNNTransformer_sweep.py
+│   ├── models/                # 모델 정의 모듈
+│   ├── checkpoints/          # 학습된 결과 저장
+│   │   ├── checkpoints/      # 모델 가중치 .pt
+│   │   ├── encoders/         # 인코더 .pkl
+│   │   └── norm/             # 정규화 파라미터 .pkl
+│   └── datasets/             # WiFi RSSI 데이터셋
+│       └── augmented/        # 증강된 학습용 데이터셋
+├── requirements.txt          # Python 의존성 패키지
 └── README.md
 ```
 
@@ -54,6 +65,18 @@ uvicorn app.main:app --reload
 
 - 기본 실행: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 - Swagger UI 문서: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+### 2️⃣ 모델 학습 (수동 실행)
+
+```bash
+python finger_printing/train/train_CNNTransformer.py
+```
+
+### 3️⃣ 하이퍼파라미터 튜닝 (wandb sweep 실행)
+
+```bash
+python finger_printing/train/train_CNNTransformer_sweep.py
+```
 
 ---
 
@@ -91,13 +114,18 @@ uvicorn app.main:app --reload
 
 ## 🧠 모델 정보
 
-- **구조**: CNN + Embedding (PyTorch 기반)
-- **입력 데이터**: MAC 주소 + RSSI 값 최대 70개 AP
+- **구조**: CNN + Transformer (PyTorch 기반)
+- **입력 데이터**: 최대 70개 AP (MAC 주소 임베딩 + RSSI)
 - **전처리 과정**:
   - Kalman Filter: RSSI 노이즈 제거
-  - Log-distance Path Loss 모델로 거리 변환
-  - KNN Imputer로 결측치 처리
-- **출력**: 위치 인덱스 (LabelEncoder로 디코딩하여 위치명 반환)
+  - Log-distance Path Loss 변환
+  - KNN 기반 결측값 보간
+- **정규화**: 평균/표준편차 기준 RSSI 정규화
+- **모델 저장 위치**:
+  - 모델: `checkpoints/checkpoints/`
+  - 인코더: `checkpoints/encoders/`
+  - 정규화 파라미터: `checkpoints/norm/`
+- **출력**: 위치 인덱스 (LabelEncoder 디코딩)
 
 ---
 
@@ -118,9 +146,9 @@ WiFi 핑거프린팅 기술을 통해 정확한 실내 위치 추정을 목표�
 
 | 역할           | 담당자 |
 |----------------|--------|
-| 데이터 수집    | Team 핑프    |
-| 모델 개발      | 박기찬    |
-| API 서버 구축  | 박기찬    |
+| 데이터 수집    | Team 핑프 |
+| 모델 개발      | 박기찬 |
+| API 서버 구축  | 박기찬 |
 | 프론트엔드/대시보드 | 누군가 하겠지 |
 
 ---
@@ -131,4 +159,5 @@ WiFi 핑거프린팅 기술을 통해 정확한 실내 위치 추정을 목표�
 - FastAPI
 - scikit-learn
 - filterpy (Kalman Filter)
+- wandb
 - uvicorn
