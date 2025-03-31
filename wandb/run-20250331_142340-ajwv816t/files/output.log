@@ -1,0 +1,12 @@
+[34m[1mwandb[0m: Ctrl + C detected. Stopping sweep.
+Traceback (most recent call last):
+  File "/Users/gichanpark/Desktop/castone_design/finger_printing/train_CNNTransformer_sweep.py", line 372, in train_model
+    X, y = create_dataset(df, mac_encoder)
+  File "/Users/gichanpark/Desktop/castone_design/finger_printing/train_CNNTransformer_sweep.py", line 352, in create_dataset
+    mac_indices = np.pad(mac_indices, (0, pad), constant_values=0)
+  File "<__array_function__ internals>", line 200, in pad
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/site-packages/numpy/lib/arraypad.py", line 794, in pad
+    padded, original_area_slice = _pad_simple(array, pad_width)
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/site-packages/numpy/lib/arraypad.py", line 124, in _pad_simple
+    padded[original_area_slice] = array
+Exception
