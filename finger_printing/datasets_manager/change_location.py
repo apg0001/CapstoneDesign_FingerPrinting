@@ -1,12 +1,13 @@
 import pandas as pd
 from datetime import datetime
+import re
 
 # 현재 날짜 및 시간 가져오기
 current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
 
 # CSV 파일 경로
-file_path = f"./datasets/wifi_rssi_log_modified_20250315_232651.csv"  # 수정할 CSV 파일
-output_path = f"./datasets/wifi_rssi_log_modified_{current_time}.csv"  # 저장할 파일
+file_path = f"./finger_printing/datasets/raw/wifi_rssi_log_20250403_184212.csv"  # 수정할 CSV 파일
+output_path = f"./finger_printing/datasets/raw/wifi_rssi_log_20250403_184212_new.csv"  # 저장할 파일
 
 # 변경할 열과 값 지정
 column_name = "Location"  # 변경할 열 이름
@@ -21,17 +22,16 @@ column_name = "Location"  # 변경할 열 이름
 #     "5143-6": "hall_5143_3",
 # }
 replace_dict = {
-    "1": "room_3166_1",
-    "2": "room_3166_2",
-    "3": "room_3166_3",
-    "4": "room_3166_4",
+    "hall_5143_2_1n": "hall_5143_2_1",
 }
 
 # CSV 파일 읽기
 df = pd.read_csv(file_path)
 
 # 특정 열에서 값 변경
-df[column_name] = df[column_name].replace(replace_dict)
+# df[column_name] = df[column_name].replace(replace_dict)
+df[column_name] = df[column_name].apply(lambda x: re.sub('-', '_', x))
+
 # 변경된 CSV 저장
 df.to_csv(output_path, index=False, encoding="utf-8")
 

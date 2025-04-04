@@ -24,4 +24,32 @@ parameters:
   early_stopping:
     values: [true, false]
   data_path:
-    value: ./finger_printing/datasets/augmented/wifi_rssi_log_augmented_20250331_000650.csv
+    value: ./finger_printing/datasets/merged/wifi_rssi_log_merged_20250404_002616.csv
+
+# method: random
+# metric:
+#   name: Val Acc
+#   goal: maximize
+
+# parameters:
+#   embedding_dim:
+#     values: [16]
+#   transformer_heads:
+#     values: [8]
+#   transformer_layers:
+#     values: [4]
+#   dropout_rate:
+#     values: [0.1]
+
+#   batch_size:
+#     values: [8]
+#   learning_rate:
+#     values: [0.0005]
+#   epochs:
+#     values: [200]
+#   scheduler:
+#     values: [true]
+#   early_stopping:
+#     values: [false]
+#   data_path:
+#     value: ./finger_printing/datasets/merged/wifi_rssi_log_merged_20250404_002616.csv
