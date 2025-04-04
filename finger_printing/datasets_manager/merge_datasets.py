@@ -38,12 +38,13 @@ if df_list:
             break
 
     if location_col:
-        # location 값이 room, hall, toilet로 시작하는 행만 필터링
-        merged_df = merged_df[merged_df[location_col].str.lower().str.startswith(("room", "hall", "toilet"))]
+        # location 값이 room, hall, toilet, ev로 시작하는 행만 필터링
+        merged_df = merged_df[merged_df[location_col].str.lower().str.startswith(("room", "hall", "toilet", "ev"))]
 
         unique_locations = merged_df[location_col].unique()
-        print(f"\n[✔] '{location_col}' 컬럼에 존재하는 고유 Location 값들 (필터링 후):")
-        for loc in unique_locations:
+        sorted_locations = sorted(unique_locations)  # 오름차순으로 정렬
+        print(f"\n[✔] '{location_col}' 컬럼에 존재하는 고유 Location 값들 (필터링 후, 오름차순):")
+        for loc in sorted_locations:
             print(f"- {loc}")
     else:
         print("\n[⚠] 'location' 컬럼을 찾을 수 없습니다.")
