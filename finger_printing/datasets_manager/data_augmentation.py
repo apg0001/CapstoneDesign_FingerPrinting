@@ -4,7 +4,7 @@ import numpy as np
 from datetime import datetime
 
 # 설정값
-INPUT_PATH = "./finger_printing/datasets/merged/wifi_rssi_log_merged_20250330_221610.csv"
+INPUT_PATH = "./finger_printing/datasets/merged/wifi_rssi_log_merged_20250404_002616.csv"
 OUTPUT_DIR = "./finger_printing/datasets/augmented"
 AUGMENT_RATIO = 1.0  # 총 5배 만들기 (원본 1 + 증강 4)
 NOISE_STD = 3.0  # RSSI에 추가할 노이즈 표준편차
