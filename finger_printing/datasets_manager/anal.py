@@ -1,7 +1,7 @@
 import pandas as pd
 
 # CSV 파일 불러오기
-file_path = './finger_printing/datasets/merged/wifi_rssi_log_merged_20250404_002616.csv'  # 여기에 CSV 파일 경로를 입력하세요
+file_path = './finger_printing/datasets/merged/wifi_rssi_log_merged_20250412_224616_new.csv'  # 여기에 CSV 파일 경로를 입력하세요
 merged_df = pd.read_csv(file_path)
 
 # 데이터 확인 (첫 5줄 출력)
