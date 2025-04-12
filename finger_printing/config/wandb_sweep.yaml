@@ -24,7 +24,7 @@ parameters:
   early_stopping:
     values: [true, false]
   data_path:
-    value: ./finger_printing/datasets/augmented/wifi_rssi_log_augmented_20250409_214033.csv
+    value: ./finger_printing/datasets/augmented/wifi_rssi_log_augmented_20250413_000254.csv
 
 # method: random
 # metric:
