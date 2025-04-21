@@ -1,0 +1,16 @@
+{"time":"2025-04-07T20:04:28.6597235+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\lab\\Desktop\\CapstoneDesign_FingerPrinting\\wandb\\run-20250407_200428-nn3zj6n3\\logs\\debug-core.log"}
+{"time":"2025-04-07T20:04:28.7903309+09:00","level":"INFO","msg":"created new stream","id":"nn3zj6n3"}
+{"time":"2025-04-07T20:04:28.7903309+09:00","level":"INFO","msg":"stream: started","id":"nn3zj6n3"}
+{"time":"2025-04-07T20:04:28.790895+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"nn3zj6n3"}
+{"time":"2025-04-07T20:04:28.7903309+09:00","level":"INFO","msg":"handler: started","stream_id":"nn3zj6n3"}
+{"time":"2025-04-07T20:04:28.790895+09:00","level":"INFO","msg":"sender: started","stream_id":"nn3zj6n3"}
+{"time":"2025-04-07T20:04:29.2252125+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-07T23:24:10.4152549+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-07T23:24:10.4157724+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-07T23:24:11.4328663+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.4471473,"progress":"565B/565B"},{"desc":"uploading wandb-summary.json","runtime_seconds":0.4471473,"progress":"269B/269B"},{"desc":"uploading config.yaml","runtime_seconds":0.191779,"progress":"1.0KB/1.0KB"}],"total_operations":3}}
+{"time":"2025-04-07T23:24:11.6074418+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-07T23:24:11.9571086+09:00","level":"INFO","msg":"stream: closing","id":"nn3zj6n3"}
+{"time":"2025-04-07T23:24:11.9571086+09:00","level":"INFO","msg":"handler: closed","stream_id":"nn3zj6n3"}
+{"time":"2025-04-07T23:24:11.9571086+09:00","level":"INFO","msg":"sender: closed","stream_id":"nn3zj6n3"}
+{"time":"2025-04-07T23:24:11.9571086+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"nn3zj6n3"}
+{"time":"2025-04-07T23:24:11.9577673+09:00","level":"INFO","msg":"stream: closed","id":"nn3zj6n3"}

@@ -1,0 +1,16 @@
+{"time":"2025-04-04T03:40:39.8723213+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\lab\\Desktop\\CapstoneDesign_FingerPrinting\\wandb\\run-20250404_034039-stv7w0lv\\logs\\debug-core.log"}
+{"time":"2025-04-04T03:40:40.0167517+09:00","level":"INFO","msg":"created new stream","id":"stv7w0lv"}
+{"time":"2025-04-04T03:40:40.0172963+09:00","level":"INFO","msg":"stream: started","id":"stv7w0lv"}
+{"time":"2025-04-04T03:40:40.0172963+09:00","level":"INFO","msg":"handler: started","stream_id":"stv7w0lv"}
+{"time":"2025-04-04T03:40:40.0172963+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"stv7w0lv"}
+{"time":"2025-04-04T03:40:40.0172963+09:00","level":"INFO","msg":"sender: started","stream_id":"stv7w0lv"}
+{"time":"2025-04-04T03:40:40.480547+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-04T04:16:09.8915056+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-04T04:16:09.8926632+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-04T04:16:10.9037312+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.4666979,"progress":"482B/482B"},{"desc":"uploading wandb-summary.json","runtime_seconds":0.4666979,"progress":"266B/266B"},{"desc":"uploading config.yaml","runtime_seconds":0.1737068,"progress":"1.0KB/1.0KB"}],"total_operations":3}}
+{"time":"2025-04-04T04:16:11.4461259+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-04T04:16:11.7754395+09:00","level":"INFO","msg":"stream: closing","id":"stv7w0lv"}
+{"time":"2025-04-04T04:16:11.7754395+09:00","level":"INFO","msg":"handler: closed","stream_id":"stv7w0lv"}
+{"time":"2025-04-04T04:16:11.7759527+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"stv7w0lv"}
+{"time":"2025-04-04T04:16:11.7759527+09:00","level":"INFO","msg":"sender: closed","stream_id":"stv7w0lv"}
+{"time":"2025-04-04T04:16:11.7759527+09:00","level":"INFO","msg":"stream: closed","id":"stv7w0lv"}

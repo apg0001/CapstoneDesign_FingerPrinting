@@ -1,0 +1,24 @@
+{"time":"2025-04-08T17:48:25.5098509+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\lab\\Desktop\\CapstoneDesign_FingerPrinting\\wandb\\run-20250408_174825-kw59bwo0\\logs\\debug-core.log"}
+{"time":"2025-04-08T17:48:25.6458427+09:00","level":"INFO","msg":"created new stream","id":"kw59bwo0"}
+{"time":"2025-04-08T17:48:25.6458427+09:00","level":"INFO","msg":"stream: started","id":"kw59bwo0"}
+{"time":"2025-04-08T17:48:25.6458427+09:00","level":"INFO","msg":"handler: started","stream_id":"kw59bwo0"}
+{"time":"2025-04-08T17:48:25.6458427+09:00","level":"INFO","msg":"sender: started","stream_id":"kw59bwo0"}
+{"time":"2025-04-08T17:48:25.6458427+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"kw59bwo0"}
+{"time":"2025-04-08T17:48:25.998089+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-08T18:33:07.6057995+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dguyanglab/wifi-fingerprinting/kw59bwo0/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2025-04-08T18:33:09.8779245+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dguyanglab/wifi-fingerprinting/kw59bwo0/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2025-04-08T18:33:14.7217566+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dguyanglab/wifi-fingerprinting/kw59bwo0/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2025-04-08T18:33:23.6474965+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dguyanglab/wifi-fingerprinting/kw59bwo0/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2025-04-08T18:47:07.0269829+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dguyanglab/wifi-fingerprinting/kw59bwo0/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2025-04-08T18:47:09.2162938+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dguyanglab/wifi-fingerprinting/kw59bwo0/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2025-04-08T18:47:20.2554411+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dguyanglab/wifi-fingerprinting/kw59bwo0/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2025-04-08T18:47:41.298858+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dguyanglab/wifi-fingerprinting/kw59bwo0/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2025-04-08T19:01:18.0213681+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-08T19:01:18.0224609+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-08T19:01:19.0299654+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading config.yaml","runtime_seconds":0.2121074,"progress":"1.0KB/1.0KB"}],"total_operations":1}}
+{"time":"2025-04-08T19:01:19.0884484+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-08T19:01:19.363404+09:00","level":"INFO","msg":"stream: closing","id":"kw59bwo0"}
+{"time":"2025-04-08T19:01:19.3638933+09:00","level":"INFO","msg":"handler: closed","stream_id":"kw59bwo0"}
+{"time":"2025-04-08T19:01:19.3638933+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"kw59bwo0"}
+{"time":"2025-04-08T19:01:19.3638933+09:00","level":"INFO","msg":"sender: closed","stream_id":"kw59bwo0"}
+{"time":"2025-04-08T19:01:19.3638933+09:00","level":"INFO","msg":"stream: closed","id":"kw59bwo0"}

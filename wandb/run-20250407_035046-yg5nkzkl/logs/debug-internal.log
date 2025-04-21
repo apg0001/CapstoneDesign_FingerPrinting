@@ -1,0 +1,16 @@
+{"time":"2025-04-07T03:50:46.4996627+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\lab\\Desktop\\CapstoneDesign_FingerPrinting\\wandb\\run-20250407_035046-yg5nkzkl\\logs\\debug-core.log"}
+{"time":"2025-04-07T03:50:46.6373943+09:00","level":"INFO","msg":"created new stream","id":"yg5nkzkl"}
+{"time":"2025-04-07T03:50:46.6380135+09:00","level":"INFO","msg":"stream: started","id":"yg5nkzkl"}
+{"time":"2025-04-07T03:50:46.6380135+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"yg5nkzkl"}
+{"time":"2025-04-07T03:50:46.6380135+09:00","level":"INFO","msg":"handler: started","stream_id":"yg5nkzkl"}
+{"time":"2025-04-07T03:50:46.6380135+09:00","level":"INFO","msg":"sender: started","stream_id":"yg5nkzkl"}
+{"time":"2025-04-07T03:50:47.0464642+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-07T05:40:15.507874+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-07T05:40:15.5087313+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-07T05:40:16.5143085+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading wandb-summary.json","runtime_seconds":0.4043034,"progress":"267B/267B"},{"desc":"uploading output.log","runtime_seconds":0.4043034,"progress":"566B/566B"},{"desc":"uploading config.yaml","runtime_seconds":0.1326595,"progress":"1.0KB/1.0KB"}],"total_operations":3}}
+{"time":"2025-04-07T05:40:16.6591452+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-07T05:40:17.0256777+09:00","level":"INFO","msg":"stream: closing","id":"yg5nkzkl"}
+{"time":"2025-04-07T05:40:17.0256777+09:00","level":"INFO","msg":"handler: closed","stream_id":"yg5nkzkl"}
+{"time":"2025-04-07T05:40:17.0256777+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"yg5nkzkl"}
+{"time":"2025-04-07T05:40:17.0256777+09:00","level":"INFO","msg":"sender: closed","stream_id":"yg5nkzkl"}
+{"time":"2025-04-07T05:40:17.0262791+09:00","level":"INFO","msg":"stream: closed","id":"yg5nkzkl"}

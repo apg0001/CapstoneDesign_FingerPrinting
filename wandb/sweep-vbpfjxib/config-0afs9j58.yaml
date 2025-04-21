@@ -1,0 +1,22 @@
+wandb_version: 1
+
+batch_size:
+  value: 8
+data_path:
+  value: ./finger_printing/datasets/augmented/wifi_rssi_log_augmented_20250409_214033.csv
+dropout_rate:
+  value: 0.3
+early_stopping:
+  value: false
+embedding_dim:
+  value: 32
+epochs:
+  value: 300
+learning_rate:
+  value: 0.0005
+scheduler:
+  value: true
+transformer_heads:
+  value: 8
+transformer_layers:
+  value: 3

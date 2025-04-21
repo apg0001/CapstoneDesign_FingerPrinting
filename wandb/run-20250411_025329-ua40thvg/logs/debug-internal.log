@@ -1,0 +1,17 @@
+{"time":"2025-04-11T02:53:29.8152232+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\lab\\Desktop\\CapstoneDesign_FingerPrinting\\wandb\\run-20250411_025329-ua40thvg\\logs\\debug-core.log"}
+{"time":"2025-04-11T02:53:29.942331+09:00","level":"INFO","msg":"created new stream","id":"ua40thvg"}
+{"time":"2025-04-11T02:53:29.942331+09:00","level":"INFO","msg":"handler: started","stream_id":"ua40thvg"}
+{"time":"2025-04-11T02:53:29.942331+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"ua40thvg"}
+{"time":"2025-04-11T02:53:29.942331+09:00","level":"INFO","msg":"stream: started","id":"ua40thvg"}
+{"time":"2025-04-11T02:53:29.942331+09:00","level":"INFO","msg":"sender: started","stream_id":"ua40thvg"}
+{"time":"2025-04-11T02:53:30.631419+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-11T03:15:16.5233281+09:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/dguyanglab/wifi-fingerprinting/ua40thvg/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-04-11T04:16:57.410461+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-11T04:16:57.4116226+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-11T04:16:58.416165+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading config.yaml","runtime_seconds":0.2394222,"progress":"1.0KB/1.0KB"}],"total_operations":1}}
+{"time":"2025-04-11T04:16:58.4368817+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-11T04:16:58.7116255+09:00","level":"INFO","msg":"stream: closing","id":"ua40thvg"}
+{"time":"2025-04-11T04:16:58.7116255+09:00","level":"INFO","msg":"handler: closed","stream_id":"ua40thvg"}
+{"time":"2025-04-11T04:16:58.7116255+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ua40thvg"}
+{"time":"2025-04-11T04:16:58.7116255+09:00","level":"INFO","msg":"sender: closed","stream_id":"ua40thvg"}
+{"time":"2025-04-11T04:16:58.7121434+09:00","level":"INFO","msg":"stream: closed","id":"ua40thvg"}

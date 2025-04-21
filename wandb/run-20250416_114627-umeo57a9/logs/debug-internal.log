@@ -1,0 +1,16 @@
+{"time":"2025-04-16T11:46:27.4185142+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\lab\\Desktop\\CapstoneDesign_FingerPrinting\\wandb\\run-20250416_114627-umeo57a9\\logs\\debug-core.log"}
+{"time":"2025-04-16T11:46:27.7454294+09:00","level":"INFO","msg":"created new stream","id":"umeo57a9"}
+{"time":"2025-04-16T11:46:27.7460027+09:00","level":"INFO","msg":"stream: started","id":"umeo57a9"}
+{"time":"2025-04-16T11:46:27.7460027+09:00","level":"INFO","msg":"handler: started","stream_id":"umeo57a9"}
+{"time":"2025-04-16T11:46:27.7460027+09:00","level":"INFO","msg":"sender: started","stream_id":"umeo57a9"}
+{"time":"2025-04-16T11:46:27.7460027+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"umeo57a9"}
+{"time":"2025-04-16T11:46:28.1588793+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-16T13:40:32.1308586+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-16T13:40:32.1320154+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-16T13:40:33.1431775+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.5159865,"progress":"486B/486B"},{"desc":"uploading wandb-summary.json","runtime_seconds":0.5159865,"progress":"264B/264B"},{"desc":"uploading config.yaml","runtime_seconds":0.2634504,"progress":"1.0KB/1.0KB"}],"total_operations":3}}
+{"time":"2025-04-16T13:40:33.5560283+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-16T13:40:33.9066319+09:00","level":"INFO","msg":"stream: closing","id":"umeo57a9"}
+{"time":"2025-04-16T13:40:33.9066319+09:00","level":"INFO","msg":"handler: closed","stream_id":"umeo57a9"}
+{"time":"2025-04-16T13:40:33.9066319+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"umeo57a9"}
+{"time":"2025-04-16T13:40:33.9066319+09:00","level":"INFO","msg":"sender: closed","stream_id":"umeo57a9"}
+{"time":"2025-04-16T13:40:33.9071465+09:00","level":"INFO","msg":"stream: closed","id":"umeo57a9"}

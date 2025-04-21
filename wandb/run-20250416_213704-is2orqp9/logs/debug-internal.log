@@ -1,0 +1,19 @@
+{"time":"2025-04-16T21:37:04.4643297+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\lab\\Desktop\\CapstoneDesign_FingerPrinting\\wandb\\run-20250416_213704-is2orqp9\\logs\\debug-core.log"}
+{"time":"2025-04-16T21:37:04.6000147+09:00","level":"INFO","msg":"created new stream","id":"is2orqp9"}
+{"time":"2025-04-16T21:37:04.6000147+09:00","level":"INFO","msg":"stream: started","id":"is2orqp9"}
+{"time":"2025-04-16T21:37:04.6000147+09:00","level":"INFO","msg":"handler: started","stream_id":"is2orqp9"}
+{"time":"2025-04-16T21:37:04.6000147+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"is2orqp9"}
+{"time":"2025-04-16T21:37:04.6000147+09:00","level":"INFO","msg":"sender: started","stream_id":"is2orqp9"}
+{"time":"2025-04-16T21:37:05.020986+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-16T23:32:09.3122391+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-04-17T01:31:41.9367404+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dguyanglab/wifi-fingerprinting/is2orqp9/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2025-04-17T01:31:44.4130803+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dguyanglab/wifi-fingerprinting/is2orqp9/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2025-04-17T02:37:41.2338416+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-17T02:37:41.2349258+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-17T02:37:42.247533+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading wandb-summary.json","runtime_seconds":0.4902349,"progress":"269B/269B"},{"desc":"uploading config.yaml","runtime_seconds":0.2504431,"progress":"1.0KB/1.0KB"}],"total_operations":2}}
+{"time":"2025-04-17T02:37:42.625883+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-17T02:37:42.9552202+09:00","level":"INFO","msg":"stream: closing","id":"is2orqp9"}
+{"time":"2025-04-17T02:37:42.9552202+09:00","level":"INFO","msg":"handler: closed","stream_id":"is2orqp9"}
+{"time":"2025-04-17T02:37:42.9552202+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"is2orqp9"}
+{"time":"2025-04-17T02:37:42.9552202+09:00","level":"INFO","msg":"sender: closed","stream_id":"is2orqp9"}
+{"time":"2025-04-17T02:37:42.9557334+09:00","level":"INFO","msg":"stream: closed","id":"is2orqp9"}

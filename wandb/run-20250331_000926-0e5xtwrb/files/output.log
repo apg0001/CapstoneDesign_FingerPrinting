@@ -1,0 +1,19 @@
+Training:   0%|                                                                       | 0/200 [02:24<?, ?it/s]
+Traceback (most recent call last):
+  File "c:/Users/lab/Desktop/CapstoneDesign_FingerPrinting/finger_printing/train_CNNTransformer_v2_CUDA.py", line 263, in <module>
+    train_model(model, train_loader, val_loader, test_loader,
+  File "c:/Users/lab/Desktop/CapstoneDesign_FingerPrinting/finger_printing/train_CNNTransformer_v2_CUDA.py", line 150, in train_model
+    outputs = model(rssi_batch, mac_batch)
+  File "C:\Users\lab\anaconda3\envs\anti\lib\site-packages\torch\nn\modules\module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "c:\Users\lab\Desktop\CapstoneDesign_FingerPrinting\finger_printing\model_CNNTransformer.py", line 48, in forward
+    x = self.dropout(self.relu(self.bn1(self.fc1(x))))
+  File "C:\Users\lab\anaconda3\envs\anti\lib\site-packages\torch\nn\modules\module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "C:\Users\lab\anaconda3\envs\anti\lib\site-packages\torch\nn\modules\batchnorm.py", line 171, in forward
+    return F.batch_norm(
+  File "C:\Users\lab\anaconda3\envs\anti\lib\site-packages\torch\nn\functional.py", line 2448, in batch_norm
+    _verify_batch_size(input.size())
+  File "C:\Users\lab\anaconda3\envs\anti\lib\site-packages\torch\nn\functional.py", line 2416, in _verify_batch_size
+    raise ValueError("Expected more than 1 value per channel when training, got input size {}".format(size))
+ValueError: Expected more than 1 value per channel when training, got input size torch.Size([1, 128])

@@ -1,0 +1,16 @@
+{"time":"2025-04-07T06:07:40.6116515+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\lab\\Desktop\\CapstoneDesign_FingerPrinting\\wandb\\run-20250407_060740-j8kbggoj\\logs\\debug-core.log"}
+{"time":"2025-04-07T06:07:40.9841923+09:00","level":"INFO","msg":"created new stream","id":"j8kbggoj"}
+{"time":"2025-04-07T06:07:40.9841923+09:00","level":"INFO","msg":"stream: started","id":"j8kbggoj"}
+{"time":"2025-04-07T06:07:40.9841923+09:00","level":"INFO","msg":"handler: started","stream_id":"j8kbggoj"}
+{"time":"2025-04-07T06:07:40.9841923+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"j8kbggoj"}
+{"time":"2025-04-07T06:07:40.9847323+09:00","level":"INFO","msg":"sender: started","stream_id":"j8kbggoj"}
+{"time":"2025-04-07T06:07:41.4261994+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-07T08:46:02.3452924+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-07T08:46:02.3463787+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-07T08:46:03.3588377+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading config.yaml","runtime_seconds":0.2388583,"progress":"1.0KB/1.0KB"}],"total_operations":1}}
+{"time":"2025-04-07T08:46:03.3920711+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-07T08:46:03.7579505+09:00","level":"INFO","msg":"stream: closing","id":"j8kbggoj"}
+{"time":"2025-04-07T08:46:03.7579505+09:00","level":"INFO","msg":"handler: closed","stream_id":"j8kbggoj"}
+{"time":"2025-04-07T08:46:03.7579505+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"j8kbggoj"}
+{"time":"2025-04-07T08:46:03.7579505+09:00","level":"INFO","msg":"sender: closed","stream_id":"j8kbggoj"}
+{"time":"2025-04-07T08:46:03.7584632+09:00","level":"INFO","msg":"stream: closed","id":"j8kbggoj"}

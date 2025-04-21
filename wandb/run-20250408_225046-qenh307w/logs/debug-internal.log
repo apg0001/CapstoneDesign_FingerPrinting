@@ -1,0 +1,16 @@
+{"time":"2025-04-08T22:50:46.5508314+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\lab\\Desktop\\CapstoneDesign_FingerPrinting\\wandb\\run-20250408_225046-qenh307w\\logs\\debug-core.log"}
+{"time":"2025-04-08T22:50:46.6827955+09:00","level":"INFO","msg":"created new stream","id":"qenh307w"}
+{"time":"2025-04-08T22:50:46.6827955+09:00","level":"INFO","msg":"stream: started","id":"qenh307w"}
+{"time":"2025-04-08T22:50:46.6827955+09:00","level":"INFO","msg":"handler: started","stream_id":"qenh307w"}
+{"time":"2025-04-08T22:50:46.6827955+09:00","level":"INFO","msg":"sender: started","stream_id":"qenh307w"}
+{"time":"2025-04-08T22:50:46.6827955+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"qenh307w"}
+{"time":"2025-04-08T22:50:47.1114449+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-08T23:55:40.7624645+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-08T23:55:40.7635833+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-08T23:55:41.7738792+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.4742395,"progress":"566B/566B"},{"desc":"uploading wandb-summary.json","runtime_seconds":0.4742395,"progress":"253B/253B"},{"desc":"uploading config.yaml","runtime_seconds":0.1579703,"progress":"1.0KB/1.0KB"}],"total_operations":3}}
+{"time":"2025-04-08T23:55:42.1980409+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-08T23:55:42.5531218+09:00","level":"INFO","msg":"stream: closing","id":"qenh307w"}
+{"time":"2025-04-08T23:55:42.5531218+09:00","level":"INFO","msg":"handler: closed","stream_id":"qenh307w"}
+{"time":"2025-04-08T23:55:42.5531218+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"qenh307w"}
+{"time":"2025-04-08T23:55:42.5531218+09:00","level":"INFO","msg":"sender: closed","stream_id":"qenh307w"}
+{"time":"2025-04-08T23:55:42.5536976+09:00","level":"INFO","msg":"stream: closed","id":"qenh307w"}

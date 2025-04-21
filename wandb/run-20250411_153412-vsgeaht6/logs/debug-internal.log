@@ -1,0 +1,16 @@
+{"time":"2025-04-11T15:34:12.2937412+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\lab\\Desktop\\CapstoneDesign_FingerPrinting\\wandb\\run-20250411_153412-vsgeaht6\\logs\\debug-core.log"}
+{"time":"2025-04-11T15:34:12.4239387+09:00","level":"INFO","msg":"created new stream","id":"vsgeaht6"}
+{"time":"2025-04-11T15:34:12.4244841+09:00","level":"INFO","msg":"stream: started","id":"vsgeaht6"}
+{"time":"2025-04-11T15:34:12.4244841+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"vsgeaht6"}
+{"time":"2025-04-11T15:34:12.4244841+09:00","level":"INFO","msg":"sender: started","stream_id":"vsgeaht6"}
+{"time":"2025-04-11T15:34:12.4244841+09:00","level":"INFO","msg":"handler: started","stream_id":"vsgeaht6"}
+{"time":"2025-04-11T15:34:12.8270086+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-11T21:29:48.6253334+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-11T21:29:48.6258465+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-11T21:29:49.6337095+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading config.yaml","runtime_seconds":0.2475296,"progress":"1.0KB/1.0KB"}],"total_operations":1}}
+{"time":"2025-04-11T21:29:49.6764423+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-11T21:29:50.0746972+09:00","level":"INFO","msg":"stream: closing","id":"vsgeaht6"}
+{"time":"2025-04-11T21:29:50.0746972+09:00","level":"INFO","msg":"handler: closed","stream_id":"vsgeaht6"}
+{"time":"2025-04-11T21:29:50.0746972+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"vsgeaht6"}
+{"time":"2025-04-11T21:29:50.0746972+09:00","level":"INFO","msg":"sender: closed","stream_id":"vsgeaht6"}
+{"time":"2025-04-11T21:29:50.0752171+09:00","level":"INFO","msg":"stream: closed","id":"vsgeaht6"}

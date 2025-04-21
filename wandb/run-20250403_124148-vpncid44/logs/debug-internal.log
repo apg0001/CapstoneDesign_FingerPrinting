@@ -1,0 +1,16 @@
+{"time":"2025-04-03T12:41:48.3986389+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\lab\\Desktop\\CapstoneDesign_FingerPrinting\\wandb\\run-20250403_124148-vpncid44\\logs\\debug-core.log"}
+{"time":"2025-04-03T12:41:48.8452637+09:00","level":"INFO","msg":"created new stream","id":"vpncid44"}
+{"time":"2025-04-03T12:41:48.8452637+09:00","level":"INFO","msg":"stream: started","id":"vpncid44"}
+{"time":"2025-04-03T12:41:48.8458256+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"vpncid44"}
+{"time":"2025-04-03T12:41:48.8458256+09:00","level":"INFO","msg":"handler: started","stream_id":"vpncid44"}
+{"time":"2025-04-03T12:41:48.8458256+09:00","level":"INFO","msg":"sender: started","stream_id":"vpncid44"}
+{"time":"2025-04-03T12:41:49.28155+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-03T14:56:09.60998+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-03T14:56:09.6111049+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-03T14:56:10.6233623+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading wandb-summary.json","runtime_seconds":0.4350958,"progress":"265B/265B"},{"desc":"uploading config.yaml","runtime_seconds":0.0646045,"progress":"1.0KB/1.0KB"}],"total_operations":2}}
+{"time":"2025-04-03T14:56:11.0562044+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-03T14:56:11.4220622+09:00","level":"INFO","msg":"stream: closing","id":"vpncid44"}
+{"time":"2025-04-03T14:56:11.4220622+09:00","level":"INFO","msg":"handler: closed","stream_id":"vpncid44"}
+{"time":"2025-04-03T14:56:11.4220622+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"vpncid44"}
+{"time":"2025-04-03T14:56:11.4220622+09:00","level":"INFO","msg":"sender: closed","stream_id":"vpncid44"}
+{"time":"2025-04-03T14:56:11.4225863+09:00","level":"INFO","msg":"stream: closed","id":"vpncid44"}
