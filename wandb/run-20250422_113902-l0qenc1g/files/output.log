@@ -1,0 +1,10 @@
+Epochs:   1%|▏              | 2/150 [04:44<5:50:42, 142.18s/it][34m[1mwandb[0m: Ctrl + C detected. Stopping sweep.
+Epochs:   1%|▏              | 2/150 [05:30<6:47:49, 165.34s/it]
+Traceback (most recent call last):
+  File "/Users/gichanpark/Desktop/castone_design/finger_printing/train/train_CNNTransformer_sweep.py", line 192, in train_model
+    loss.backward()
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/site-packages/torch/_tensor.py", line 492, in backward
+    torch.autograd.backward(
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/site-packages/torch/autograd/__init__.py", line 251, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+Exception

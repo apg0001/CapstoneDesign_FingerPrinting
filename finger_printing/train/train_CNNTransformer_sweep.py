@@ -16,9 +16,10 @@ import os
 import yaml
 from transformers import get_linear_schedule_with_warmup
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-
+sys.path.append(os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "../..")))
 from finger_printing.models.model_CNNTransformer import WifiCNNTransformer
+
 
 # CUDA 설정
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -108,39 +109,60 @@ def create_dataset(df, mac_encoder, max_ap=100):
 
 # ---------- 모델 학습 ----------
 
-
 def train_model(config=None):
     with wandb.init(config=config):
         config = wandb.config
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
+        # 모델 관련 파라미터 계산
         df = pd.read_csv(config.data_path)
-        df, location_encoder, mac_encoder, rssi_mean, rssi_std = preprocess_data(
-            df)
+        df, location_encoder, mac_encoder, rssi_mean, rssi_std = preprocess_data(df)
         X, y = create_dataset(df, mac_encoder)
 
-        train_X, temp_X, train_y, temp_y = train_test_split(
-            X, y, test_size=0.2)
-        val_X, test_X, val_y, test_y = train_test_split(
-            temp_X, temp_y, test_size=0.5)
+        num_ap = X.shape[1]  # AP 수
+        num_classes = len(set(y))  # 클래스 수 (위치 수)
+        num_mac = len(mac_encoder.classes_)  # MAC 주소 개수
 
-        train_loader = DataLoader(WifiDataset(
-            train_X, train_y), batch_size=config.batch_size, drop_last=True)
-        val_loader = DataLoader(WifiDataset(
-            val_X, val_y), batch_size=config.batch_size, drop_last=True)
-        test_loader = DataLoader(WifiDataset(
-            test_X, test_y), batch_size=config.batch_size, drop_last=True)
+        # config 파라미터를 YAML 파일로 저장
+        config_dict = {
+            "embedding_dim": config.embedding_dim,
+            "transformer_heads": config.transformer_heads,
+            "transformer_layers": config.transformer_layers,
+            "dropout_rate": config.dropout_rate,
+            "batch_size": config.batch_size,
+            "learning_rate": config.learning_rate,
+            "epochs": config.epochs,
+            "scheduler": config.scheduler,
+            "early_stopping": config.early_stopping,
+            "data_path": config.data_path,
+            "num_ap": num_ap,  # AP 수 추가
+            "num_classes": num_classes,  # 클래스 수 추가
+            "num_mac": num_mac  # MAC 주소 개수 추가
+        }
 
+        with open(f"./finger_printing/config/hyperparameters_{timestamp}.yaml", 'w') as f:
+            yaml.dump(config_dict, f)
+
+        # 모델 학습 데이터셋 준비
+        train_X, temp_X, train_y, temp_y = train_test_split(X, y, test_size=0.2)
+        val_X, test_X, val_y, test_y = train_test_split(temp_X, temp_y, test_size=0.5)
+
+        train_loader = DataLoader(WifiDataset(train_X, train_y), batch_size=config.batch_size, drop_last=True)
+        val_loader = DataLoader(WifiDataset(val_X, val_y), batch_size=config.batch_size, drop_last=True)
+        test_loader = DataLoader(WifiDataset(test_X, test_y), batch_size=config.batch_size, drop_last=True)
+
+        # 모델 정의
         model = WifiCNNTransformer(
-            num_ap=X.shape[1],
-            num_classes=len(set(y)),
-            num_mac=len(mac_encoder.classes_),
+            num_ap=num_ap,
+            num_classes=num_classes,
+            num_mac=num_mac,
             embedding_dim=config.embedding_dim,
             transformer_heads=config.transformer_heads,
             transformer_layers=config.transformer_layers,
             dropout_rate=config.dropout_rate,
         ).to(device)
 
+        # 학습 관련 설정
         criterion = nn.CrossEntropyLoss()
         optimizer = optim.Adam(model.parameters(), lr=config.learning_rate)
 
@@ -162,8 +184,7 @@ def train_model(config=None):
             model.train()
             total_loss, correct, total = 0, 0, 0
             for rssi_batch, mac_batch, labels_batch in train_loader:
-                rssi_batch, mac_batch, labels_batch = rssi_batch.to(
-                    device), mac_batch.to(device), labels_batch.to(device)
+                rssi_batch, mac_batch, labels_batch = rssi_batch.to(device), mac_batch.to(device), labels_batch.to(device)
 
                 optimizer.zero_grad()
                 outputs = model(rssi_batch, mac_batch)
@@ -181,12 +202,12 @@ def train_model(config=None):
             train_acc = 100 * correct / total
             train_loss = total_loss / len(train_loader)
 
+            # Validation loss 계산
             model.eval()
             val_loss, val_correct, val_total = 0, 0, 0
             with torch.no_grad():
                 for rssi_val, mac_val, labels_val in val_loader:
-                    rssi_val, mac_val, labels_val = rssi_val.to(
-                        device), mac_val.to(device), labels_val.to(device)
+                    rssi_val, mac_val, labels_val = rssi_val.to(device), mac_val.to(device), labels_val.to(device)
                     outputs = model(rssi_val, mac_val)
                     loss = criterion(outputs, labels_val)
                     val_loss += loss.item()
@@ -237,7 +258,6 @@ def train_model(config=None):
             print(f"✅ 정규화 파라미터 저장 완료: {norm_path}")
 
         evaluate_model(model, test_loader, location_encoder)
-
 # ---------- 평가 ----------
 
 
