@@ -1,0 +1,7 @@
+{"time":"2025-04-23T21:58:17.5976435+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\lab\\Desktop\\CapstoneDesign_FingerPrinting\\wandb\\run-20250423_215817-b5p130x1\\logs\\debug-core.log"}
+{"time":"2025-04-23T21:58:17.9137886+09:00","level":"INFO","msg":"created new stream","id":"b5p130x1"}
+{"time":"2025-04-23T21:58:17.9137886+09:00","level":"INFO","msg":"stream: started","id":"b5p130x1"}
+{"time":"2025-04-23T21:58:17.9137886+09:00","level":"INFO","msg":"handler: started","stream_id":"b5p130x1"}
+{"time":"2025-04-23T21:58:17.9137886+09:00","level":"INFO","msg":"sender: started","stream_id":"b5p130x1"}
+{"time":"2025-04-23T21:58:17.9137886+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"b5p130x1"}
+{"time":"2025-04-23T21:58:18.3479341+09:00","level":"INFO","msg":"Starting system monitor"}

@@ -1,0 +1,17 @@
+{"time":"2025-04-23T04:23:05.4188789+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\lab\\Desktop\\CapstoneDesign_FingerPrinting\\wandb\\run-20250423_042305-gkehr7l0\\logs\\debug-core.log"}
+{"time":"2025-04-23T04:23:05.5503881+09:00","level":"INFO","msg":"created new stream","id":"gkehr7l0"}
+{"time":"2025-04-23T04:23:05.5503881+09:00","level":"INFO","msg":"stream: started","id":"gkehr7l0"}
+{"time":"2025-04-23T04:23:05.550973+09:00","level":"INFO","msg":"handler: started","stream_id":"gkehr7l0"}
+{"time":"2025-04-23T04:23:05.550973+09:00","level":"INFO","msg":"sender: started","stream_id":"gkehr7l0"}
+{"time":"2025-04-23T04:23:05.550973+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"gkehr7l0"}
+{"time":"2025-04-23T04:23:06.0794302+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-23T06:01:55.1994857+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-04-23T06:38:40.5428794+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-23T06:38:40.5434658+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-23T06:38:41.5552851+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading config.yaml","runtime_seconds":0.2282203,"progress":"1.0KB/1.0KB"}],"total_operations":1}}
+{"time":"2025-04-23T06:38:41.594004+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-23T06:38:41.9695339+09:00","level":"INFO","msg":"stream: closing","id":"gkehr7l0"}
+{"time":"2025-04-23T06:38:41.9695339+09:00","level":"INFO","msg":"handler: closed","stream_id":"gkehr7l0"}
+{"time":"2025-04-23T06:38:41.9695339+09:00","level":"INFO","msg":"sender: closed","stream_id":"gkehr7l0"}
+{"time":"2025-04-23T06:38:41.9695339+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"gkehr7l0"}
+{"time":"2025-04-23T06:38:41.9701256+09:00","level":"INFO","msg":"stream: closed","id":"gkehr7l0"}

@@ -1,0 +1,16 @@
+{"time":"2025-04-23T18:15:06.9012336+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\lab\\Desktop\\CapstoneDesign_FingerPrinting\\wandb\\run-20250423_181506-ydedimfu\\logs\\debug-core.log"}
+{"time":"2025-04-23T18:15:07.265303+09:00","level":"INFO","msg":"created new stream","id":"ydedimfu"}
+{"time":"2025-04-23T18:15:07.265303+09:00","level":"INFO","msg":"stream: started","id":"ydedimfu"}
+{"time":"2025-04-23T18:15:07.265303+09:00","level":"INFO","msg":"sender: started","stream_id":"ydedimfu"}
+{"time":"2025-04-23T18:15:07.265303+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"ydedimfu"}
+{"time":"2025-04-23T18:15:07.265303+09:00","level":"INFO","msg":"handler: started","stream_id":"ydedimfu"}
+{"time":"2025-04-23T18:15:07.8967065+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-23T21:58:13.9311367+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-23T21:58:13.9319941+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-23T21:58:14.9371211+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading wandb-summary.json","runtime_seconds":0.4742626,"progress":"267B/267B"},{"desc":"uploading output.log","runtime_seconds":0.4742626,"progress":"591B/591B"},{"desc":"uploading config.yaml","runtime_seconds":0.21913,"progress":"1.0KB/1.0KB"}],"total_operations":3}}
+{"time":"2025-04-23T21:58:15.0297667+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-23T21:58:15.4481625+09:00","level":"INFO","msg":"stream: closing","id":"ydedimfu"}
+{"time":"2025-04-23T21:58:15.4481625+09:00","level":"INFO","msg":"handler: closed","stream_id":"ydedimfu"}
+{"time":"2025-04-23T21:58:15.4481625+09:00","level":"INFO","msg":"sender: closed","stream_id":"ydedimfu"}
+{"time":"2025-04-23T21:58:15.4481625+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ydedimfu"}
+{"time":"2025-04-23T21:58:15.448676+09:00","level":"INFO","msg":"stream: closed","id":"ydedimfu"}
