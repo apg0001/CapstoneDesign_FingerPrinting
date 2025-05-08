@@ -1,0 +1,13 @@
+batch_size: 8
+data_path: ./finger_printing/datasets/train_dataset_augmented.csv
+dropout_rate: 0.1
+early_stopping: false
+embedding_dim: 32
+epochs: 200
+learning_rate: 0.0005
+num_ap: 100
+num_classes: 436
+num_mac: 1274
+scheduler: false
+transformer_heads: 8
+transformer_layers: 2

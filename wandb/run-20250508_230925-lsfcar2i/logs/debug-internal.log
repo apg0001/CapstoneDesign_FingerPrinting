@@ -1,0 +1,16 @@
+{"time":"2025-05-08T23:09:25.686472+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"/Users/gichanpark/Desktop/castone_design/wandb/run-20250508_230925-lsfcar2i/logs/debug-core.log"}
+{"time":"2025-05-08T23:09:25.796185+09:00","level":"INFO","msg":"created new stream","id":"lsfcar2i"}
+{"time":"2025-05-08T23:09:25.79626+09:00","level":"INFO","msg":"stream: started","id":"lsfcar2i"}
+{"time":"2025-05-08T23:09:25.796281+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"lsfcar2i"}
+{"time":"2025-05-08T23:09:25.796291+09:00","level":"INFO","msg":"handler: started","stream_id":"lsfcar2i"}
+{"time":"2025-05-08T23:09:25.796332+09:00","level":"INFO","msg":"sender: started","stream_id":"lsfcar2i"}
+{"time":"2025-05-08T23:09:26.0968+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-05-08T23:09:26.17202+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-05-08T23:09:26.172773+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-05-08T23:09:27.178758+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.212101625,"progress":"1.1KB/1.1KB"},{"desc":"uploading wandb-summary.json","runtime_seconds":0.212063792,"progress":"24B/24B"}],"total_operations":2}}
+{"time":"2025-05-08T23:09:27.522017+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-05-08T23:09:27.835087+09:00","level":"INFO","msg":"stream: closing","id":"lsfcar2i"}
+{"time":"2025-05-08T23:09:27.835108+09:00","level":"INFO","msg":"handler: closed","stream_id":"lsfcar2i"}
+{"time":"2025-05-08T23:09:27.835121+09:00","level":"INFO","msg":"sender: closed","stream_id":"lsfcar2i"}
+{"time":"2025-05-08T23:09:27.835118+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"lsfcar2i"}
+{"time":"2025-05-08T23:09:27.835246+09:00","level":"INFO","msg":"stream: closed","id":"lsfcar2i"}

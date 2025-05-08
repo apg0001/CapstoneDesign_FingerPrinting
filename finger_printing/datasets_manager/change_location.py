@@ -6,8 +6,8 @@ import re
 current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
 
 # CSV 파일 경로
-file_path = f"./finger_printing/datasets/merged/wifi_rssi_log_merged_20250412_224616_new.csv"  # 수정할 CSV 파일
-output_path = f"./finger_printing/datasets/merged/wifi_rssi_log_merged_20250412_224616_new2.csv"  # 저장할 파일
+file_path = f"./finger_printing/datasets/merged/wifi_rssi_log_merged_20250508_225643.csv"  # 수정할 CSV 파일
+output_path = f"./finger_printing/datasets/merged/wifi_rssi_log_merged_20250508_225643_new.csv"  # 저장할 파일
 
 # 변경할 열과 값 지정
 column_name = "Location"  # 변경할 열 이름
@@ -26,11 +26,11 @@ column_name = "Location"  # 변경할 열 이름
 #     "hall_5130_2_1": "hall_5130_1_2",
 #     "hall_5103_3_1": "hall_5103_3_2",
 # }
-replace_dict = {
-    "hall_5128_9_1n": "hall_5128_9_1",
-    "hall_5130_2_1n": "hall_5130_2_1",
-    "hall_5103_3_1(찐)": "hall_5103_3_1",
-}
+# replace_dict = {
+#     "hall_5128_9_1n": "hall_5128_9_1",
+#     "hall_5130_2_1n": "hall_5130_2_1",
+#     "hall_5103_3_1(찐)": "hall_5103_3_1",
+# }
 
 # CSV 파일 읽기
 df = pd.read_csv(file_path)

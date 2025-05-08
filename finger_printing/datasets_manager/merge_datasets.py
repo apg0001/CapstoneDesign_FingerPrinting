@@ -40,7 +40,7 @@ if df_list:
     if location_col:
         # location 값이 room, hall, toilet, ev로 시작하는 행만 필터링
         merged_df = merged_df.dropna(subset=["Location"])
-        merged_df = merged_df[merged_df[location_col].str.lower().str.startswith(("room", "hall", "toilet", "ev"))]
+        merged_df = merged_df[merged_df[location_col].str.lower().str.startswith(("room", "hall", "toilet", "ev", "stair"))]
         
         unique_locations = merged_df[location_col].unique()
         sorted_locations = sorted(unique_locations)  # 오름차순으로 정렬
