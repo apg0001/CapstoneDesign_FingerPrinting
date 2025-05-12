@@ -36,18 +36,18 @@ async def predict(input_data: InputData):
         predicted_locations = predict_rssi(
             model_path, encoder_path, norm_path, mac_rssi_data, config_path
         )
-        return {"predicted_location": str(predicted_locations)}
+        return {"status_code": 200, "message": "Prediction Success!", "predicted_location": str(predicted_locations)}
 
     except FileNotFoundError as e:
         logger.error(f"FileNotFoundError: {str(e)}")
         raise HTTPException(
-            status_code=500, detail=f"File not found: {str(e)}")
+            status_code=500, message=f"File not found: {str(e)}")
 
     except Exception as e:
         logger.error(f"Exception occurred: {str(e)}")
         logger.error(traceback.format_exc())  # 오류가 발생한 스택 트레이스를 출력
         raise HTTPException(
-            status_code=500, detail="An error occurred while processing the request.")
+            status_code=500, message="An error occurred while processing the request.")
 
 
 @app.post("/test")
