@@ -66,3 +66,10 @@ async def predict_api(input_data: InputData, background_tasks: BackgroundTasks):
         logger.error(f"Exception occurred: {str(e)}")
         logger.error(traceback.format_exc())
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/test")
+async def predict_api(input_data: InputData):
+    logger.info(f"{input_data.mac_rssi}")
+    first_mac = list(input_data.mac_rssi.keys())[0]
+    first_rssi = input_data.mac_rssi[first_mac]
+    return {"input_data": f"first_mac: {first_mac}, first_rssi: {first_rssi}"}
