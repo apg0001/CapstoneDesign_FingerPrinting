@@ -1,7 +1,7 @@
 import pandas as pd
 
 # CSV 파일 불러오기
-file_path = './finger_printing/datasets/merged/wifi_rssi_log_merged_20250507_222810_changed.csv'  # 여기에 CSV 파일 경로를 입력하세요
+file_path = './finger_printing/datasets/train_dataset_augmented.csv'  # 여기에 CSV 파일 경로를 입력하세요
 merged_df = pd.read_csv(file_path)
 
 # 데이터 확인 (첫 5줄 출력)
@@ -30,3 +30,5 @@ print(f"\n[전체 표준편차 평균]: {average_std_rssi:.2f} [전체 표준편
 
 # 결과를 CSV로 저장 (선택사항)
 rssi_stats.to_csv('rssi_statistics.csv', index=False)
+
+# [전체 표준편차 평균]: 1.46 [전체 표준편차 최소: 0.00 [전체 표준편차 최대]: 17.68

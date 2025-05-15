@@ -1,16 +1,14 @@
-import logging
-import traceback
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Dict
-from .predict import predict_rssi
+import logging
+import traceback
+import numpy as np
+from .predict import Predictor
 
 app = FastAPI()
 
 
-class WifiData(BaseModel):
-    input: Dict[str, int]  # {mac: rssi}
-    
 class InputData(BaseModel):
     mac_rssi: Dict[str, int]  # MAC 주소를 키로 하고, RSSI 값을 값으로 갖는 딕셔너리
 
@@ -20,34 +18,27 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
+# 모델 경로 설정
+MODEL_PATH = "./finger_printing/checkpoints/checkpoints/fp_model_CNNTransformer_20250423_181508.pt"
+ENCODER_PATH = "./finger_printing/checkpoints/encoders/encoders_20250423_181508.pkl"
+NORM_PATH = "./finger_printing/checkpoints/norm/norm_20250423_181508.pkl"
+CONFIG_PATH = "./finger_printing/config/hyperparameters_20250423_215818.yaml"
+
+# Predictor 객체 생성 (서버 시작시 1회만 로드)
+predictor = Predictor(MODEL_PATH, ENCODER_PATH, NORM_PATH, CONFIG_PATH)
+
+
 @app.post("/predict")
-async def predict(input_data: InputData):
-    mac_rssi_data = input_data.mac_rssi
-    print(mac_rssi_data)
-    
-    # 예시: 모델 경로, 인코더 경로, 정규화 파라미터 경로 및 예측을 위한 데이터
-    model_path = "./finger_printing/checkpoints/checkpoints/fp_model_CNNTransformer_20250423_181508.pt"
-    encoder_path = "./finger_printing/checkpoints/encoders/encoders_20250423_181508.pkl"
-    norm_path = "./finger_printing/checkpoints/norm/norm_20250423_181508.pkl"
-    config_path = "./finger_printing/config/hyperparameters_20250423_215818.yaml"
-
+async def predict_api(input_data: InputData):
     try:
-        # 예측 수행
-        predicted_locations = predict_rssi(
-            model_path, encoder_path, norm_path, mac_rssi_data, config_path
-        )
-        return {"status_code": 200, "message": "Prediction Success!", "predicted_location": str(predicted_locations)}
-
-    except FileNotFoundError as e:
-        logger.error(f"FileNotFoundError: {str(e)}")
-        raise HTTPException(
-            status_code=500, message=f"File not found: {str(e)}")
+        location, _ = predictor.predict(input_data.mac_rssi)
+        return {"status_code": 200, "message": "Prediction Success!", "predicted_location": str(location)}
 
     except Exception as e:
         logger.error(f"Exception occurred: {str(e)}")
         logger.error(traceback.format_exc())  # 오류가 발생한 스택 트레이스를 출력
         raise HTTPException(
-            status_code=500, message="An error occurred while processing the request.")
+            status_code=500, message=f"An error occurred while processing the request.: {e}")
 
 
 @app.post("/test")
