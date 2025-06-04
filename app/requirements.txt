@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+torch==2.1.2
+pandas
+numpy
+scikit-learn
+filterpy
+tqdm==4.66.2
+joblib==1.2.0
+wandb==0.16.3
+matplotlib
+chardet==5.2.0

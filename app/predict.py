@@ -3,7 +3,7 @@ import numpy as np
 import joblib
 import yaml
 from filterpy.kalman import KalmanFilter
-from finger_printing.models.model_CNNTransformer import WifiCNNTransformer
+from .model_CNNTransformer import WifiCNNTransformer
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
