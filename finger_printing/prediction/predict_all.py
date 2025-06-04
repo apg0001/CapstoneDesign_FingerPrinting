@@ -5,6 +5,7 @@ import yaml
 from filterpy.kalman import KalmanFilter
 import sys
 import os
+import pandas as pd
 
 sys.path.append(os.path.abspath(
     os.path.join(os.path.dirname(__file__), "../..")))
@@ -115,6 +116,26 @@ class Predictor:
             pred_location = self.location_encoder.inverse_transform([pred_idx])[
                 0]
         return pred_location, probs.cpu().numpy()
+    
+def predict_and_save_csv(input_data_list, predictor, output_csv_path):
+    result_list = []
+    
+    for item in input_data_list:
+        location = item['location']
+        input_data = item['input_data']
+        
+        predicted_location = predictor.predict(input_data)
+        
+        if(location!=predicted_location[0]):
+            result_list.append({
+                'Predicted Location': predicted_location[0],  # 예측된 위치
+                'Actual Location': location  # 실제 위치
+            })
+            print(result_list[-1])
+        
+        result_df = pd.DataFrame(result_list)
+        result_df.to_csv(output_csv_path, index=False)
+        # print(f"Results saved to {output_csv_path}")
 
 
 if __name__ == "__main__":
@@ -245,5 +266,26 @@ if __name__ == "__main__":
     }
 
 
-    location, _ = predictor.predict(input_data)
-    print(location)
+    # location, _ = predictor.predict(input_data)
+    # print(location)
+    
+    # CSV 파일에서 Time, Location 기준으로 그룹화한 input_data 리스트 생성
+    df = pd.read_csv('./finger_printing/datasets/train_dataset.csv')
+    grouped = df.groupby(['Time', 'Location'])
+
+    input_data_list = []
+    for (_, location), group in grouped:
+        input_data = {}
+        for _, row in group.iterrows():
+            mac = row['MAC']
+            rssi = row['RSSI']
+            input_data[mac] = rssi
+        
+        input_data_list.append({
+            'location': location,
+            'input_data': input_data
+        })
+    
+    output_csv_path = './prediction_results.csv'
+    predict_and_save_csv(input_data_list, predictor, output_csv_path)
+
