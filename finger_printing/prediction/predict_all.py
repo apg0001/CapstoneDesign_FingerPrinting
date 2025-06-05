@@ -116,26 +116,79 @@ class Predictor:
             pred_location = self.location_encoder.inverse_transform([pred_idx])[
                 0]
         return pred_location, probs.cpu().numpy()
-    
+
+
 def predict_and_save_csv(input_data_list, predictor, output_csv_path):
     result_list = []
-    
-    for item in input_data_list:
+
+    # for item in input_data_list:
+    #     location = item['location']
+    #     input_data = item['input_data']
+
+    #     predicted_location = predictor.predict(input_data)
+
+    #     if(location!=predicted_location[0]):
+    #         result_list.append({
+    #             'Predicted Location': predicted_location[0],  # 예측된 위치
+    #             'Actual Location': location  # 실제 위치
+    #         })
+    #         print(result_list[-1])
+
+    #     result_df = pd.DataFrame(result_list)
+    #     result_df.to_csv(output_csv_path, index=False)
+    #     # print(f"Results saved to {output_csv_path}")
+
+    total = len(input_data_list)
+    wrong_room = 0
+    wrong_total = 0
+
+    for i, item in enumerate(input_data_list):
         location = item['location']
         input_data = item['input_data']
+
+        predicted_location = predictor.predict(input_data)[0]
+
+        label = location.split("_")
+        pred = predicted_location.split("_")
         
-        predicted_location = predictor.predict(input_data)
-        
-        if(location!=predicted_location[0]):
+        if label[2] == 'r': # 13011
+            label[2] = '-1'
+        if label[2] == 'l':
+            label[2] = '-3'
+        if pred[2] == 'r':
+            pred[2] = '-1'
+        if pred[2] == 'l':
+            pred[2] = '-3'
+
+        # 완전히 다른 장소를 예측함 hall_5143 <-> room_5143 or room_5141 <-> room_5143
+        condition1 = label[0] != pred[0] or label[1] != pred[1]
+        # 같은 장소지만 좌표의 오차가 양옆 2칸 이상 차이남
+        condition2 =  (label[0] == pred[0] and label[1] == pred[1]) and \
+            abs(int(label[2]) - int(pred[2])) > 1 or abs(int(label[3]) - int(pred[3])) > 1
+
+        if (condition1):
+            wrong_room += 1
+            wrong_total += 1
             result_list.append({
-                'Predicted Location': predicted_location[0],  # 예측된 위치
+                'Predicted Location': predicted_location,  # 예측된 위치
                 'Actual Location': location  # 실제 위치
             })
-            print(result_list[-1])
-        
+            print(
+                f"{i}/{total} | ({wrong_room/i}% | {wrong_total/i}) : {result_list[-1]}")
+        elif (condition2):
+            wrong_total += 1
+            result_list.append({
+                'Predicted Location': predicted_location,  # 예측된 위치
+                'Actual Location': location  # 실제 위치
+            })
+            print(
+                f"{i}/{total} | ({wrong_room/i}% | {wrong_total/i}) : {result_list[-1]}")
+
         result_df = pd.DataFrame(result_list)
         result_df.to_csv(output_csv_path, index=False)
-        # print(f"Results saved to {output_csv_path}")
+    print(f"Results saved to {output_csv_path}")
+    print(f"Accuracy(같은 방) = {1-wrong_room/total}%")
+    print(f"Accuracy(오차 범위가 1칸 이내) = {1-wrong_total/total}%")
 
 
 if __name__ == "__main__":
@@ -198,8 +251,8 @@ if __name__ == "__main__":
     #     "fa:9e:38:74:f8:92": -68,
     #     "26:3f:1b:59:2e:74": -82
     # }
-    
-    input_data = { # hall_5143_1_1
+
+    input_data = {  # hall_5143_1_1
         "2a:3f:1b:59:2e:74": -80,
         "26:3f:0b:e2:63:60": -45,
         "22:3f:0b:59:2e:74": -70,
@@ -265,10 +318,9 @@ if __name__ == "__main__":
         "78:db:2f:0f:ec:59": -66
     }
 
-
     # location, _ = predictor.predict(input_data)
     # print(location)
-    
+
     # CSV 파일에서 Time, Location 기준으로 그룹화한 input_data 리스트 생성
     df = pd.read_csv('./finger_printing/datasets/train_dataset.csv')
     grouped = df.groupby(['Time', 'Location'])
@@ -280,12 +332,11 @@ if __name__ == "__main__":
             mac = row['MAC']
             rssi = row['RSSI']
             input_data[mac] = rssi
-        
+
         input_data_list.append({
             'location': location,
             'input_data': input_data
         })
-    
+
     output_csv_path = './prediction_results.csv'
     predict_and_save_csv(input_data_list, predictor, output_csv_path)
-

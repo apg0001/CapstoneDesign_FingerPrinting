@@ -1,32 +1,3 @@
-method: random
-metric:
-  name: Val Acc
-  goal: maximize
-
-parameters:
-  embedding_dim:
-    values: [8, 16, 32]
-  transformer_heads:
-    values: [2, 4, 8]
-  transformer_layers:
-    values: [2, 3, 4]
-  dropout_rate:
-    values: [0.1, 0.3]
-
-  batch_size:
-    values: [4, 8]
-  learning_rate:
-    values: [0.001, 0.0005, 0.0001]
-  epochs:
-    values: [100, 150, 200, 250, 300]
-  scheduler:
-    values: [true, false]
-  early_stopping:
-    values: [true, false]
-  data_path:
-    value: ./finger_printing/datasets/train_dataset_augmented.csv
-    # value: ./finger_printing/datasets/augmented/wifi_rssi_log_augmented_20250413_000254.csv
-
 # method: random
 # metric:
 #   name: Val Acc
@@ -34,23 +5,51 @@ parameters:
 
 # parameters:
 #   embedding_dim:
-#     values: [16]
+#     values: [8, 16, 32]
 #   transformer_heads:
-#     values: [8]
+#     values: [2, 4, 8]
 #   transformer_layers:
-#     values: [4]
+#     values: [2, 3, 4]
 #   dropout_rate:
-#     values: [0.1]
+#     values: [0.1, 0.3]
 
 #   batch_size:
-#     values: [8]
+#     values: [4, 8]
 #   learning_rate:
-#     values: [0.0005]
+#     values: [0.001, 0.0005, 0.0001]
 #   epochs:
-#     values: [200]
+#     values: [100, 150, 200, 250, 300]
 #   scheduler:
-#     values: [true]
+#     values: [true, false]
 #   early_stopping:
-#     values: [false]
+#     values: [true, false]
 #   data_path:
-#     value: ./finger_printing/datasets/merged/wifi_rssi_log_merged_20250404_002616.csv
+#     value: ./finger_printing/datasets/train_dataset_augmented.csv
+
+method: random
+metric:
+  name: Val Acc
+  goal: maximize
+
+parameters:
+  embedding_dim:
+    values: [32]
+  transformer_heads:
+    values: [2]
+  transformer_layers:
+    values: [3]
+  dropout_rate:
+    values: [0.3]
+
+  batch_size:
+    values: [8]
+  learning_rate:
+    values: [0.0005]
+  epochs:
+    values: [250]
+  scheduler:
+    values: [true]
+  early_stopping:
+    values: [false]
+  data_path:
+    value: ./finger_printing/datasets/train_dataset_augmented.csv
