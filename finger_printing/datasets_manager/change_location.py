@@ -6,8 +6,8 @@ import re
 current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
 
 # CSV 파일 경로
-file_path = f"./finger_printing/datasets/train_dataset_renamed.csv"  # 수정할 CSV 파일
-output_path = f"./finger_printing/datasets/train_dataset_renamed.csv"  # 저장할 파일
+file_path = f"./finger_printing/datasets/train_dataset.csv"  # 수정할 CSV 파일
+output_path = f"./finger_printing/datasets/train_dataset_new.csv"  # 저장할 파일
 
 # 변경할 열과 값 지정
 column_name = "Location"  # 변경할 열 이름
@@ -38,13 +38,23 @@ df = pd.read_csv(file_path)
 # 특정 열에서 값 변경
 # df[column_name] = df[column_name].replace(replace_dict)
 # df[column_name] = df[column_name].apply(lambda x: re.sub('hall_toilet_5', 'hall_toilet5', x))
-df[column_name] = df[column_name].apply(lambda x: re.sub('toilet_5_7', 'toilet_5_7_0', x))
-df[column_name] = df[column_name].apply(lambda x: re.sub('toilet_5_6', 'toilet_5_6_0', x))
-df[column_name] = df[column_name].apply(lambda x: re.sub('toilet_5_5', 'toilet_5_5_0', x))
-df[column_name] = df[column_name].apply(lambda x: re.sub('toilet_5_4', 'toilet_5_4_0', x))
-df[column_name] = df[column_name].apply(lambda x: re.sub('toilet_5_3', 'toilet_5_3_0', x))
-df[column_name] = df[column_name].apply(lambda x: re.sub('toilet_5_2', 'toilet_5_2_0', x))
-df[column_name] = df[column_name].apply(lambda x: re.sub('toilet_5_1', 'toilet_5_1_0', x))
+# df[column_name] = df[column_name].apply(lambda x: re.sub('toilet_5_7', 'toilet_5_7_0', x))
+# df[column_name] = df[column_name].apply(lambda x: re.sub('toilet_5_6', 'toilet_5_6_0', x))
+# df[column_name] = df[column_name].apply(lambda x: re.sub('toilet_5_5', 'toilet_5_5_0', x))
+# df[column_name] = df[column_name].apply(lambda x: re.sub('toilet_5_4', 'toilet_5_4_0', x))
+# df[column_name] = df[column_name].apply(lambda x: re.sub('toilet_5_3', 'toilet_5_3_0', x))
+# df[column_name] = df[column_name].apply(lambda x: re.sub('toilet_5_2', 'toilet_5_2_0', x))
+# df[column_name] = df[column_name].apply(lambda x: re.sub('toilet_5_1', 'toilet_5_1_0', x))
+df[column_name] = df[column_name].apply(lambda x: re.sub('stair_5_l_0', 'stair_5l_0_0', x))
+df[column_name] = df[column_name].apply(lambda x: re.sub('stair_5_l_1', 'stair_5l_1_0', x))
+df[column_name] = df[column_name].apply(lambda x: re.sub('stair_5_l_2', 'stair_5l_2_0', x))
+df[column_name] = df[column_name].apply(lambda x: re.sub('stair_5_l_3', 'stair_5l_3_0', x))
+df[column_name] = df[column_name].apply(lambda x: re.sub('stair_6_l_0', 'stair_5l_4_0', x))
+df[column_name] = df[column_name].apply(lambda x: re.sub('stair_5_r_0', 'stair_5r_0_0', x))
+df[column_name] = df[column_name].apply(lambda x: re.sub('stair_5_r_1', 'stair_5r_1_0', x))
+df[column_name] = df[column_name].apply(lambda x: re.sub('stair_5_r_2', 'stair_5r_2_0', x))
+df[column_name] = df[column_name].apply(lambda x: re.sub('stair_5_r_3', 'stair_5r_3_0', x))
+df[column_name] = df[column_name].apply(lambda x: re.sub('stair_6_r_0', 'stair_5r_4_0', x))
 
 # 변경된 CSV 저장
 df.to_csv(output_path, index=False, encoding="utf-8")
