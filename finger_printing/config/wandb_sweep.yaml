@@ -52,4 +52,4 @@ parameters:
   early_stopping:
     values: [false]
   data_path:
-    value: ./finger_printing/datasets/train_dataset_augmented.csv
+    value: ./finger_printing/datasets/train_dataset.csv
