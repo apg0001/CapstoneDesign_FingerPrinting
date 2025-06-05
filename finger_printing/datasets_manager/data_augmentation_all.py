@@ -142,7 +142,7 @@ for i in range(AUGMENT_COUNT):
     session = session.drop(index=drop_indices).reset_index(drop=True)
 
     # 새로운 timestamp 부여
-    session["Time"] = new_time_start + i
+    session["Time"] += (new_time_start + i)
 
     augmented_list.append(session)
 
@@ -154,6 +154,6 @@ print(f"✨ 최종 데이터 행 수: {len(final_df)}")
 # 저장
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-output_path = os.path.join(OUTPUT_DIR, f"train_dataset_augmented.csv")
+output_path = os.path.join(OUTPUT_DIR, f"train_dataset_augmented_{NOISE_STD}.csv")
 final_df.to_csv(output_path, index=False)
 print(f"📁 저장 완료: {output_path}")

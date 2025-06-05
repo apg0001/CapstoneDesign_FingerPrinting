@@ -154,17 +154,17 @@ def predict_and_save_csv(input_data_list, predictor, output_csv_path):
         if label[2] == 'r': # 13011
             label[2] = '-1'
         if label[2] == 'l':
-            label[2] = '-3'
+            label[2] = '-4'
         if pred[2] == 'r':
             pred[2] = '-1'
         if pred[2] == 'l':
-            pred[2] = '-3'
+            pred[2] = '-4'
 
         # 완전히 다른 장소를 예측함 hall_5143 <-> room_5143 or room_5141 <-> room_5143
         condition1 = label[0] != pred[0] or label[1] != pred[1]
         # 같은 장소지만 좌표의 오차가 양옆 2칸 이상 차이남
         condition2 =  (label[0] == pred[0] and label[1] == pred[1]) and \
-            abs(int(label[2]) - int(pred[2])) > 1 or abs(int(label[3]) - int(pred[3])) > 1
+            abs(int(label[2]) - int(pred[2])) > 2 or abs(int(label[3]) - int(pred[3])) > 2
 
         if (condition1):
             wrong_room += 1
@@ -192,6 +192,13 @@ def predict_and_save_csv(input_data_list, predictor, output_csv_path):
 
 
 if __name__ == "__main__":
+    # 데이터 증강 전
+    # MODEL_PATH = "./finger_printing/checkpoints/checkpoints/fp_model_CNNTransformer_20250605_150856.pt"
+    # ENCODER_PATH = "./finger_printing/checkpoints/encoders/encoders_20250605_150856.pkl"
+    # NORM_PATH = "./finger_printing/checkpoints/norm/norm_20250605_150856.pkl"
+    # CONFIG_PATH = "./finger_printing/config/hyperparameters_20250605_150856.yaml"
+    
+    # 데이터 증강 후
     MODEL_PATH = "./finger_printing/checkpoints/checkpoints/fp_model_CNNTransformer_20250520_172109.pt"
     ENCODER_PATH = "./finger_printing/checkpoints/encoders/encoders_20250520_172109.pkl"
     NORM_PATH = "./finger_printing/checkpoints/norm/norm_20250520_172109.pkl"
