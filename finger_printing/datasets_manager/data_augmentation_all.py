@@ -109,7 +109,7 @@ import numpy as np
 from datetime import datetime
 
 # 설정값
-INPUT_PATH = "./finger_printing/datasets/train_dataset.csv"
+INPUT_PATH = "./finger_printing/datasets/train_dataset_augmented_selective_3.0.csv"
 OUTPUT_DIR = "./finger_printing/datasets/"
 AUGMENT_COUNT = 2  # 원본 대비 추가로 몇 배 생성할지
 NOISE_STD = 3.0
@@ -123,8 +123,8 @@ original_df = pd.read_csv(INPUT_PATH)
 print(f"🧪 원본 데이터 행 수: {len(original_df)}")
 
 # Time → 정수 timestamp
-original_df["Time"] = pd.to_datetime(original_df["Time"])
-original_df["Time"] = original_df["Time"].astype(np.int64) // 10**9
+# original_df["Time"] = pd.to_datetime(original_df["Time"])
+# original_df["Time"] = original_df["Time"].astype(np.int64) // 10**9
 
 # 증강용 시작 타임
 new_time_start = original_df["Time"].max() + 1
@@ -154,6 +154,6 @@ print(f"✨ 최종 데이터 행 수: {len(final_df)}")
 # 저장
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-output_path = os.path.join(OUTPUT_DIR, f"train_dataset_augmented_{NOISE_STD}.csv")
+output_path = os.path.join(OUTPUT_DIR, f"train_dataset_augmented_selective_3.0_augmented_{NOISE_STD}.csv")
 final_df.to_csv(output_path, index=False)
 print(f"📁 저장 완료: {output_path}")
