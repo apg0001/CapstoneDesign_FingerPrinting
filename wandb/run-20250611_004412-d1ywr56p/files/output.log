@@ -1,0 +1,19 @@
+[34m[1mwandb[0m: Ctrl + C detected. Stopping sweep.
+Traceback (most recent call last):
+  File "/Users/gichanpark/Desktop/castone_design/finger_printing/train/train_CNN.py", line 119, in train_model
+    if config['scheduler']:
+  File "/Users/gichanpark/Desktop/castone_design/finger_printing/train/train_CNN.py", line 57, in preprocess_data
+    df["rssi_weighted"] = df.groupby("MAC")["rssi_filtered"].transform(lambda x: np.average(x, weights=np.abs(x)))
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/site-packages/pandas/core/groupby/generic.py", line 469, in transform
+    return self._transform(
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/site-packages/pandas/core/groupby/groupby.py", line 1530, in _transform
+    return self._transform_general(func, *args, **kwargs)
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/site-packages/pandas/core/groupby/generic.py", line 503, in _transform_general
+    res = func(group, *args, **kwargs)
+  File "/Users/gichanpark/Desktop/castone_design/finger_printing/train/train_CNN.py", line 41, in apply_kalman_filter
+    kf.update(np.array([[r]]))
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/site-packages/filterpy/kalman/kalman_filter.py", line 563, in update
+    self.z = deepcopy(z)
+  File "/opt/homebrew/anaconda3/envs/capstone/lib/python3.8/copy.py", line 153, in deepcopy
+    y = copier(memo)
+Exception
