@@ -29,16 +29,16 @@ logger = logging.getLogger(__name__)
 # CONFIG_PATH = "./config/hyperparameters_20250423_181508.yaml"
 
 # 6층 데이터 포함 증강 x
-MODEL_PATH = "./app/checkpoints/fp_model_CNNTransformer_20250520_172109.pt"
-ENCODER_PATH = "./app/checkpoints/encoders_20250520_172109.pkl"
-NORM_PATH = "./app/checkpoints/norm_20250520_172109.pkl"
-CONFIG_PATH = "./app/config/hyperparameters_20250520_172109.yaml"
+# MODEL_PATH = "./app/checkpoints/fp_model_CNNTransformer_20250520_172109.pt"
+# ENCODER_PATH = "./app/checkpoints/encoders_20250520_172109.pkl"
+# NORM_PATH = "./app/checkpoints/norm_20250520_172109.pkl"
+# CONFIG_PATH = "./app/config/hyperparameters_20250520_172109.yaml"
 
 # 6층 데이터 파인튜닝 후 증강
-# MODEL_PATH = "./app/checkpoints/fp_model_CNNTransformer_20250608_143837.pt"
-# ENCODER_PATH = "./app/checkpoints/encoders_20250608_143837.pkl"
-# NORM_PATH = "./app/checkpoints/norm_20250608_143837.pkl"
-# CONFIG_PATH = "./app/config/hyperparameters_20250608_143837.yaml"
+MODEL_PATH = "./app/checkpoints/fp_model_CNNTransformer_20250608_143837.pt"
+ENCODER_PATH = "./app/checkpoints/encoders_20250608_143837.pkl"
+NORM_PATH = "./app/checkpoints/norm_20250608_143837.pkl"
+CONFIG_PATH = "./app/config/hyperparameters_20250608_143837.yaml"
 
 predictor = Predictor(MODEL_PATH, ENCODER_PATH, NORM_PATH, CONFIG_PATH)
 
