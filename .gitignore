@@ -2,4 +2,4 @@
 # *.pt
 # *.pkl
 # *.yaml
-./wandb
+finger_printing/wandb
