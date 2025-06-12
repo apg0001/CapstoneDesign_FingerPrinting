@@ -1,5 +1,2 @@
-ce_dict = {
-    "hall_5128_9_1n": "hall_5128_9_1",
-    "hall_5130_2_1n": "hall_5130_2_1",
-    "hall_5103_3_1(찐)": "hall_5103_3_1",
-}
+original_df["Time"] = pd.to_datetime(original_df["Time"])
+original_df["Time"] = original_df["Time"].astype(np.int64) // 10**9

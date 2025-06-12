@@ -23,39 +23,87 @@ def apply_kalman_filter(rssi_values):
     return np.array(filtered)
 
 # 전처리 함수
+# def preprocess_input(input_mac_rssi, mac_encoder, rssi_mean, rssi_std, max_ap=100, rssi_threshold=-95):
+#     macs = []
+#     rssis = []
+#     # print(input_mac_rssi)
+#     location1 = input_mac_rssi["location1"]
+#     location2 = input_mac_rssi["location2"]
+#     location3 = input_mac_rssi["location3"]
+
+#     for input_mac_rssi in [location1, location2, location3]:
+#         for mac, rssi in input_mac_rssi.items():
+#             if rssi > rssi_threshold:
+#                 macs.append(mac)
+#                 rssis.append(rssi)
+#     if len(rssis) == 0:
+#         raise ValueError("No RSSI values above threshold")
+
+#     rssis_filtered = apply_kalman_filter(np.array(rssis))
+
+#     weights = np.abs(rssis_filtered)
+#     rssi_weighted = np.average(rssis_filtered, weights=weights)
+
+#     rssi_norm = (rssi_weighted - rssi_mean) / rssi_std
+
+#     mac_indices = []
+#     rssi_values = []
+#     for mac, rssi in zip(macs, [rssi_norm]*len(macs)):
+#         try:
+#             idx = mac_encoder.transform([mac])[0] + 1
+#             mac_indices.append(idx)
+#             rssi_values.append(rssi)
+#         except ValueError:
+#             continue
+
+#     if len(mac_indices) < max_ap:
+#         pad_len = max_ap - len(mac_indices)
+#         mac_indices = np.pad(mac_indices, (0, pad_len), constant_values=0)
+#         rssi_values = np.pad(rssi_values, (0, pad_len), constant_values=0)
+#     else:
+#         mac_indices = mac_indices[:max_ap]
+#         rssi_values = rssi_values[:max_ap]
+
+#     X = np.column_stack([mac_indices, rssi_values])
+#     return np.expand_dims(X, axis=0)
+
+# 전처리 함수
+# 학습에 사용되지 않은 맥주소는 버림
 def preprocess_input(input_mac_rssi, mac_encoder, rssi_mean, rssi_std, max_ap=100, rssi_threshold=-95):
     macs = []
     rssis = []
-    # print(input_mac_rssi)
-    location1 = input_mac_rssi["location1"]
-    location2 = input_mac_rssi["location2"]
-    location3 = input_mac_rssi["location3"]
 
-    for input_mac_rssi in [location1, location2, location3]:
-        for mac, rssi in input_mac_rssi.items():
+    # 3개 위치의 rssi 통합
+    for location_key in ["location1", "location2", "location3"]:
+        location_rssi = input_mac_rssi.get(location_key, {})
+        for mac, rssi in location_rssi.items():
             if rssi > rssi_threshold:
-                macs.append(mac)
-                rssis.append(rssi)
+                try:
+                    mac_encoder.transform([mac])  # 등록된 MAC인지 확인
+                    macs.append(mac)
+                    rssis.append(rssi)
+                except ValueError:
+                    continue  # 미등록 MAC 무시
+
     if len(rssis) == 0:
-        raise ValueError("No RSSI values above threshold")
+        raise ValueError("No known MAC addresses with RSSI above threshold")
 
     rssis_filtered = apply_kalman_filter(np.array(rssis))
-
     weights = np.abs(rssis_filtered)
     rssi_weighted = np.average(rssis_filtered, weights=weights)
-
     rssi_norm = (rssi_weighted - rssi_mean) / rssi_std
 
     mac_indices = []
     rssi_values = []
-    for mac, rssi in zip(macs, [rssi_norm]*len(macs)):
+    for mac in macs:
         try:
             idx = mac_encoder.transform([mac])[0] + 1
             mac_indices.append(idx)
-            rssi_values.append(rssi)
+            rssi_values.append(rssi_norm)  # 동일한 rssi_norm 사용
         except ValueError:
-            continue
+            continue  # 이미 거른 상태지만, 안전하게 한 번 더
 
+    # Padding 또는 Truncation
     if len(mac_indices) < max_ap:
         pad_len = max_ap - len(mac_indices)
         mac_indices = np.pad(mac_indices, (0, pad_len), constant_values=0)
