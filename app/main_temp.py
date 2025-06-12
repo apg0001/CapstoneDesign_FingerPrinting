@@ -71,8 +71,9 @@ def background_online_training(input_mac_rssi):
 async def predict_api(input_data: InputData, background_tasks: BackgroundTasks, request: Request):
     print(request.body)
     print(input_data)
+    logger.info(input_data)
     try: 
-        location, _ = predictor.predict(input_data)
+        location, _ = predictor.predict(input_data.mac_rssi)
         # background_tasks.add_task(
         #     background_online_training, input_data.mac_rssi)
         return {"status_code": 200, "message": "Prediction Success!", "predicted_location": str(location)}
