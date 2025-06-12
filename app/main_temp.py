@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, BackgroundTasks
+from fastapi import FastAPI, HTTPException, BackgroundTasks, Request
 from pydantic import BaseModel
 from typing import Dict, Optional
 import logging
@@ -37,10 +37,13 @@ online_trainer = OnlineTrainer(
 )
 
 
+# class InputData(BaseModel):
+#     mac_rssi: Optional[Dict[str, int]] = None
+#     mac_rssi2: Optional[Dict[str, int]] = None
+#     mac_rssi3: Optional[Dict[str, int]] = None
+
 class InputData(BaseModel):
-    mac_rssi1: Optional[Dict[str, int]] = None
-    mac_rssi2: Optional[Dict[str, int]] = None
-    mac_rssi3: Optional[Dict[str, int]] = None
+    mac_rssi: Dict[str, Dict[str, int]]
 
 
 def detect_new_macs(input_mac_rssi, mac_encoder):
@@ -65,7 +68,9 @@ def background_online_training(input_mac_rssi):
 
 
 @app.post("/predict")
-async def predict_api(input_data: InputData, background_tasks: BackgroundTasks):
+async def predict_api(input_data: InputData, background_tasks: BackgroundTasks, request: Request):
+    print(request.body)
+    print(input_data)
     try: 
         location, _ = predictor.predict(input_data)
         # background_tasks.add_task(
