@@ -49,7 +49,7 @@ wandb_local/
 # Data
 *.csv
 *.json
-*.pkl
+# *.pkl
 *.npy
 *.npz
 
