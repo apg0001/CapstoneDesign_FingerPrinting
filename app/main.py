@@ -59,11 +59,14 @@ online_trainer = OnlineTrainer(
     max_ap=predictor.config["num_ap"]
 )
 
+# 데이터 한 개만 입력
+# class InputData(BaseModel):
+#     mac_rssi: Dict[str, int]
 
+# 데이터 3개 입력
 class InputData(BaseModel):
-    mac_rssi: Dict[str, int]
-
-
+    mac_rssi: Dict[str, Dict[str, int]]
+    
 def detect_new_macs(input_mac_rssi, mac_encoder):
     new_macs = []
     for mac in input_mac_rssi.keys():

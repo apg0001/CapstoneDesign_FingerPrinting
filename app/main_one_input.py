@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from typing import Dict, Optional
 import logging
 import traceback
-from .predict_temp import Predictor
+from .predict_one_input import Predictor
 # detect_new_macs 함수 별도로 구현 필요
 from .online_trainer import OnlineTrainer, detect_new_macs
 

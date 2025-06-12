@@ -26,11 +26,16 @@ def apply_kalman_filter(rssi_values):
 def preprocess_input(input_mac_rssi, mac_encoder, rssi_mean, rssi_std, max_ap=100, rssi_threshold=-95):
     macs = []
     rssis = []
+    # print(input_mac_rssi)
+    location1 = input_mac_rssi["location1"]
+    location2 = input_mac_rssi["location2"]
+    location3 = input_mac_rssi["location3"]
 
-    for mac, rssi in input_mac_rssi.items():
-        if rssi > rssi_threshold:
-            macs.append(mac)
-            rssis.append(rssi)
+    for input_mac_rssi in [location1, location2, location3]:
+        for mac, rssi in input_mac_rssi.items():
+            if rssi > rssi_threshold:
+                macs.append(mac)
+                rssis.append(rssi)
     if len(rssis) == 0:
         raise ValueError("No RSSI values above threshold")
 
