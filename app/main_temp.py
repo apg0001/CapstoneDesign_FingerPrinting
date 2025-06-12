@@ -69,9 +69,9 @@ def background_online_training(input_mac_rssi):
 
 @app.post("/predict")
 async def predict_api(input_data: InputData, background_tasks: BackgroundTasks, request: Request):
-    print(request.body)
-    print(input_data)
-    logger.info(input_data)
+    # print(request.body)
+    # print(input_data)
+    # logger.info(input_data)
     try: 
         location, _ = predictor.predict(input_data.mac_rssi)
         # background_tasks.add_task(

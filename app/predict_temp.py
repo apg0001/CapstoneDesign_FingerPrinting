@@ -26,7 +26,7 @@ def apply_kalman_filter(rssi_values):
 def preprocess_input(input_mac_rssi, mac_encoder, rssi_mean, rssi_std, max_ap=100, rssi_threshold=-95):
     macs = []
     rssis = []
-    print(input_mac_rssi)
+    # print(input_mac_rssi)
     location1 = input_mac_rssi["location1"]
     location2 = input_mac_rssi["location2"]
     location3 = input_mac_rssi["location3"]
