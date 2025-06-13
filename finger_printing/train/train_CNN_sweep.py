@@ -94,7 +94,7 @@ def train_model(config=None):
         config = wandb.config
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
-        df = pd.read_csv("./finger_printing/datasets/filtered_dataset3.0.csv")
+        df = pd.read_csv(config.data_path)
         df, location_encoder, mac_encoder, rssi_mean, rssi_std = preprocess_data(df)
         X, y = create_dataset(df, mac_encoder)
 

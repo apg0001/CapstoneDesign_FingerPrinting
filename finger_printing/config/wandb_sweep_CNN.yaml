@@ -24,3 +24,5 @@ parameters:
     values: [True, False]
   early_stopping:
     values: [False, True]
+  data_path:
+    value: ./finger_printing/datasets/filtered_dataset3.0.csv
