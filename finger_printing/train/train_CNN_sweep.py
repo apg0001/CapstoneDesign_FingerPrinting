@@ -89,37 +89,43 @@ def create_dataset(df, mac_encoder, max_ap=100):
     return np.array(X_list), np.array(y_list)
 
 
-def train_model(data_path, batch_size, learning_rate, epochs, dropout_rate, scheduler_enabled=False, early_stopping = False):
-    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+def train_model(config=None):
+    with wandb.init(config=config):
+        config = wandb.config
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
-    df = pd.read_csv(data_path)
-    df, location_encoder, mac_encoder, rssi_mean, rssi_std = preprocess_data(df)
-    X, y = create_dataset(df, mac_encoder)
+        df = pd.read_csv("./finger_printing/datasets/filtered_dataset3.0.csv")
+        df, location_encoder, mac_encoder, rssi_mean, rssi_std = preprocess_data(df)
+        X, y = create_dataset(df, mac_encoder)
 
-    num_ap = X.shape[1]
-    num_classes = len(set(y))
-    num_mac = len(mac_encoder.classes_)
+        num_ap = X.shape[1]
+        num_classes = len(set(y))
+        num_mac = len(mac_encoder.classes_)
 
-    model = WifiCNN(
-        num_ap=num_ap,
-        num_classes=num_classes,
-        num_mac=num_mac,
-        dropout_rate=dropout_rate
-    ).to(device)
+        model = WifiCNN(
+            num_ap=num_ap,
+            num_classes=num_classes,
+            num_mac=num_mac,
+            dropout_rate=config.dropout_rate,
+            conv1_channels=config.conv1_channels,
+            conv2_channels=config.conv2_channels,
+            kernel_size=config.kernel_size,
+            padding=config.padding
+        ).to(device)
 
     train_X, temp_X, train_y, temp_y = train_test_split(X, y, test_size=0.2)
     val_X, test_X, val_y, test_y = train_test_split(temp_X, temp_y, test_size=0.5)
 
-    train_loader = DataLoader(WifiDataset(train_X, train_y), batch_size=batch_size, drop_last=True)
-    val_loader = DataLoader(WifiDataset(val_X, val_y), batch_size=batch_size, drop_last=True)
-    test_loader = DataLoader(WifiDataset(test_X, test_y), batch_size=batch_size, drop_last=True)
+    train_loader = DataLoader(WifiDataset(train_X, train_y), batch_size=config.batch_size, drop_last=True)
+    val_loader = DataLoader(WifiDataset(val_X, val_y), batch_size=config.batch_size, drop_last=True)
+    test_loader = DataLoader(WifiDataset(test_X, test_y), batch_size=config.batch_size, drop_last=True)
 
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+    optimizer = optim.Adam(model.parameters(), lr=config.learning_rate)
 
     scheduler = None
-    if scheduler_enabled:
-        total_steps = len(train_loader) * epochs
+    if config.scheduler_enabled:
+        total_steps = len(train_loader) * config.epochs
         scheduler = get_linear_schedule_with_warmup(optimizer,
                                                     num_warmup_steps=int(0.1 * total_steps),
                                                     num_training_steps=total_steps)
@@ -129,7 +135,7 @@ def train_model(data_path, batch_size, learning_rate, epochs, dropout_rate, sche
     patience, patience_counter = 15, 0
 
     wandb.init(project="wifi-fingerprinting", name=f"CNN_{timestamp}")
-    epoch_bar = tqdm(range(epochs), desc="Epochs")
+    epoch_bar = tqdm(range(config.epochs), desc="Epochs")
     for epoch in epoch_bar:
         model.train()
         total_loss, correct, total = 0, 0, 0
@@ -181,7 +187,7 @@ def train_model(data_path, batch_size, learning_rate, epochs, dropout_rate, sche
             patience_counter = 0
         else:
             patience_counter += 1
-            if patience_counter >= patience and early_stopping:
+            if patience_counter >= patience and config.early_stopping:
                 break
 
     if best_model_state:
@@ -227,12 +233,9 @@ def evaluate_model(model, loader, location_encoder):
     
 # ---------- Main ----------
 if __name__ == "__main__":
-    config = {
-        "data_path": "./finger_printing/datasets/filtered_dataset3.0.csv",
-        "batch_size": 8,
-        "learning_rate": 1e-3,
-        "epochs": 250,
-        "dropout_rate": 0.3,
-        "early_stopping": False
-    }
-    train_model(**config)
+    import yaml
+    with open("./wandb_sweep_CNN.yaml") as f:
+        sweep_config = yaml.safe_load(f)
+
+    sweep_id = wandb.sweep(sweep_config, project="wifi-fingerprinting")
+    wandb.agent(sweep_id, function=train_model)
