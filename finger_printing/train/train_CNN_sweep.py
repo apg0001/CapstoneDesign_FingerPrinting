@@ -234,7 +234,7 @@ def evaluate_model(model, loader, location_encoder):
 # ---------- Main ----------
 if __name__ == "__main__":
     import yaml
-    with open("./wandb_sweep_CNN.yaml") as f:
+    with open("./finger_printing/config/wandb_sweep_CNN.yaml") as f:
         sweep_config = yaml.safe_load(f)
 
     sweep_id = wandb.sweep(sweep_config, project="wifi-fingerprinting")
