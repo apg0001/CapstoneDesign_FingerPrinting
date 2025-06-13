@@ -109,7 +109,7 @@ import numpy as np
 from datetime import datetime
 
 # 설정값
-INPUT_PATH = "./finger_printing/datasets/filtered_dataset.csv"
+INPUT_PATH = "./finger_printing/datasets/filtered_dataset2.csv"
 OUTPUT_DIR = "./finger_printing/datasets/"
 AUGMENT_COUNT = 2  # 원본 대비 추가로 몇 배 생성할지
 NOISE_STD = 3.0

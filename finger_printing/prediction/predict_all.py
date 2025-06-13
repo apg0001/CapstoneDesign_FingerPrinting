@@ -210,11 +210,17 @@ if __name__ == "__main__":
     # NORM_PATH = "./finger_printing/checkpoints/norm/norm_20250608_001029.pkl"
     # CONFIG_PATH = "./finger_printing/config/hyperparameters_20250608_001029.yaml"
     
-    # 파인튜닝 데이터 추가 및 데이터 증강 후 - early_stopping
-    MODEL_PATH = "./finger_printing/checkpoints/checkpoints/fp_model_CNNTransformer_20250608_143837.pt"
-    ENCODER_PATH = "./finger_printing/checkpoints/encoders/encoders_20250608_143837.pkl"
-    NORM_PATH = "./finger_printing/checkpoints/norm/norm_20250608_143837.pkl"
-    CONFIG_PATH = "./finger_printing/config/hyperparameters_20250608_143837.yaml"
+    # # 파인튜닝 데이터 추가 및 데이터 증강 후 - early_stopping
+    # MODEL_PATH = "./finger_printing/checkpoints/checkpoints/fp_model_CNNTransformer_20250608_143837.pt"
+    # ENCODER_PATH = "./finger_printing/checkpoints/encoders/encoders_20250608_143837.pkl"
+    # NORM_PATH = "./finger_printing/checkpoints/norm/norm_20250608_143837.pkl"
+    # CONFIG_PATH = "./finger_printing/config/hyperparameters_20250608_143837.yaml"
+    
+    # 일부 데이터 삭제
+    MODEL_PATH = "./finger_printing/checkpoints/checkpoints/fp_model_CNNTransformer_20250613_012000.pt"
+    ENCODER_PATH = "./finger_printing/checkpoints/encoders/encoders_20250613_012000.pkl"
+    NORM_PATH = "./finger_printing/checkpoints/norm/norm_20250613_012000.pkl"
+    CONFIG_PATH = "./finger_printing/config/hyperparameters_20250613_012000.yaml"
 
 
 
@@ -224,7 +230,8 @@ if __name__ == "__main__":
     # print(location)
 
     # CSV 파일에서 Time, Location 기준으로 그룹화한 input_data 리스트 생성
-    df = pd.read_csv('./finger_printing/datasets/train_dataset.csv')
+    # df = pd.read_csv('./finger_printing/datasets/train_dataset.csv')
+    df = pd.read_csv('./finger_printing/datasets/filtered_dataset.csv')
     grouped = df.groupby(['Time', 'Location'])
 
     input_data_list = []

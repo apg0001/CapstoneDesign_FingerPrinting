@@ -1,0 +1,27 @@
+method: grid
+metric:
+  name: Val Acc
+  goal: maximize
+
+parameters:
+  batch_size:
+    values: [8, 16, 32]
+  learning_rate:
+    min: 1e-4
+    max: 5e-3
+  dropout_rate:
+    values: [0.2, 0.3, 0.5]
+  conv1_channels:
+    values: [16, 32, 64]
+  conv2_channels:
+    values: [32, 64, 128]
+  kernel_size:
+    values: [3, 5]
+  padding:
+    values: [1, 2]
+  epochs:
+    value: 250
+  scheduler:
+    value: [True, False]
+  early_stopping:
+    value: [False, True]

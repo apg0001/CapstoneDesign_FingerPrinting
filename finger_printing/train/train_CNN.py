@@ -11,9 +11,8 @@ from tqdm import tqdm
 import wandb
 import datetime
 import joblib
-import sys
 import os
-import yaml
+import sys
 from transformers import get_linear_schedule_with_warmup
 
 sys.path.append(os.path.abspath(
@@ -22,11 +21,8 @@ sys.path.append(os.path.abspath(
 from finger_printing.models.model_CNN import WifiCNN
 
 
-# CUDA 설정
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
-
-# ---------- 칼만 필터 ----------
 
 
 def apply_kalman_filter(rssi_values):
@@ -43,8 +39,6 @@ def apply_kalman_filter(rssi_values):
         filtered.append(kf.x[0, 0])
     return np.array(filtered)
 
-# 데이터셋 정의
-
 
 class WifiDataset(Dataset):
     def __init__(self, X, y):
@@ -57,7 +51,6 @@ class WifiDataset(Dataset):
 
     def __len__(self):
         return len(self.rssi)
-# 전처리 및 데이터셋 생성 함수
 
 
 def preprocess_data(df, rssi_threshold=-95):
@@ -68,14 +61,13 @@ def preprocess_data(df, rssi_threshold=-95):
     mac_encoder = LabelEncoder()
     df["mac_encoded"] = mac_encoder.fit_transform(df["MAC"])
 
-    # 칼만 필터 적용 및 가중평균 계산
-    df["rssi_filtered"] = df.groupby(
-        "MAC")["RSSI"].transform(apply_kalman_filter)
+    df["rssi_filtered"] = df.groupby("MAC")["RSSI"].transform(apply_kalman_filter)
     df["rssi_weighted"] = df.groupby("MAC")["rssi_filtered"].transform(
         lambda x: np.average(x, weights=np.abs(x)))
     rssi_mean = df["rssi_weighted"].mean()
     rssi_std = df["rssi_weighted"].std()
     df["rssi_norm"] = (df["rssi_weighted"] - rssi_mean) / rssi_std
+
     return df, location_encoder, mac_encoder, rssi_mean, rssi_std
 
 
@@ -96,71 +88,59 @@ def create_dataset(df, mac_encoder, max_ap=100):
         y_list.append(location)
     return np.array(X_list), np.array(y_list)
 
-# 모델 학습
 
+def train_model(config=None):
+    with wandb.init(config=config):
+        config = wandb.config
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
-def train_model(config):
-    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        df = pd.read_csv("./finger_printing/datasets/filtered_dataset3.0.csv")
+        df, location_encoder, mac_encoder, rssi_mean, rssi_std = preprocess_data(df)
+        X, y = create_dataset(df, mac_encoder)
 
-    # 데이터 로드 및 전처리
-    df = pd.read_csv(config['data_path'])
-    df, location_encoder, mac_encoder, rssi_mean, rssi_std = preprocess_data(
-        df)
-    X, y = create_dataset(df, mac_encoder)
+        num_ap = X.shape[1]
+        num_classes = len(set(y))
+        num_mac = len(mac_encoder.classes_)
 
-    num_ap = X.shape[1]  # AP 수
-    num_classes = len(set(y))  # 클래스 수
-    num_mac = len(mac_encoder.classes_)  # MAC 주소 개수
+        model = WifiCNN(
+            num_ap=num_ap,
+            num_classes=num_classes,
+            num_mac=num_mac,
+            dropout_rate=config.dropout_rate,
+            conv1_channels=config.conv1_channels,
+            conv2_channels=config.conv2_channels,
+            kernel_size=config.kernel_size,
+            padding=config.padding
+        ).to(device)
 
-    # 모델 정의
-    model = WifiCNN(
-        num_ap=num_ap,
-        num_classes=num_classes,
-        num_mac=num_mac,
-        embedding_dim=config['embedding_dim'],
-        transformer_heads=config['transformer_heads'],
-        transformer_layers=config['transformer_layers'],
-        dropout_rate=config['dropout_rate']
-    ).to(device)
-
-    model.eval()  # 예측 모드로 설정
-
-    # 데이터셋 준비
     train_X, temp_X, train_y, temp_y = train_test_split(X, y, test_size=0.2)
-    val_X, test_X, val_y, test_y = train_test_split(
-        temp_X, temp_y, test_size=0.5)
+    val_X, test_X, val_y, test_y = train_test_split(temp_X, temp_y, test_size=0.5)
 
-    train_loader = DataLoader(WifiDataset(
-        train_X, train_y), batch_size=config['batch_size'], drop_last=True)
-    val_loader = DataLoader(WifiDataset(val_X, val_y),
-                            batch_size=config['batch_size'], drop_last=True)
-    test_loader = DataLoader(WifiDataset(
-        test_X, test_y), batch_size=config['batch_size'], drop_last=True)
+    train_loader = DataLoader(WifiDataset(train_X, train_y), batch_size=config.batch_size, drop_last=True)
+    val_loader = DataLoader(WifiDataset(val_X, val_y), batch_size=config.batch_size, drop_last=True)
+    test_loader = DataLoader(WifiDataset(test_X, test_y), batch_size=config.batch_size, drop_last=True)
 
-    # 손실 함수 및 최적화
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=config['learning_rate'])
+    optimizer = optim.Adam(model.parameters(), lr=config.learning_rate)
 
     scheduler = None
-    if config['scheduler']:
-        total_steps = len(train_loader) * config['epochs']
-        scheduler = get_linear_schedule_with_warmup(
-            optimizer,
-            num_warmup_steps=int(0.1 * total_steps),
-            num_training_steps=total_steps
-        )
+    if config.scheduler_enabled:
+        total_steps = len(train_loader) * config.epochs
+        scheduler = get_linear_schedule_with_warmup(optimizer,
+                                                    num_warmup_steps=int(0.1 * total_steps),
+                                                    num_training_steps=total_steps)
 
     best_val_loss = float('inf')
     best_model_state = None
     patience, patience_counter = 15, 0
 
-    epoch_bar = tqdm(range(config['epochs']), desc="Epochs")
+    wandb.init(project="wifi-fingerprinting", name=f"CNN_{timestamp}")
+    epoch_bar = tqdm(range(config.epochs), desc="Epochs")
     for epoch in epoch_bar:
         model.train()
         total_loss, correct, total = 0, 0, 0
         for rssi_batch, mac_batch, labels_batch in train_loader:
-            rssi_batch, mac_batch, labels_batch = rssi_batch.to(
-                device), mac_batch.to(device), labels_batch.to(device)
+            rssi_batch, mac_batch, labels_batch = rssi_batch.to(device), mac_batch.to(device), labels_batch.to(device)
 
             optimizer.zero_grad()
             outputs = model(rssi_batch, mac_batch)
@@ -178,13 +158,11 @@ def train_model(config):
         train_acc = 100 * correct / total
         train_loss = total_loss / len(train_loader)
 
-        # Validation loss 계산
         model.eval()
         val_loss, val_correct, val_total = 0, 0, 0
         with torch.no_grad():
             for rssi_val, mac_val, labels_val in val_loader:
-                rssi_val, mac_val, labels_val = rssi_val.to(
-                    device), mac_val.to(device), labels_val.to(device)
+                rssi_val, mac_val, labels_val = rssi_val.to(device), mac_val.to(device), labels_val.to(device)
                 outputs = model(rssi_val, mac_val)
                 loss = criterion(outputs, labels_val)
                 val_loss += loss.item()
@@ -194,31 +172,33 @@ def train_model(config):
 
         val_acc = 100 * val_correct / val_total
         val_loss /= len(val_loader)
+        # 🎯 tqdm에 정확도와 손실 출력
+        epoch_bar.set_postfix({
+            "Train Acc": f"{train_acc:.2f}%",
+            "Val Loss": f"{val_loss:.4f}"
+        })
 
-        # 로그 기록
         wandb.log({"Train Loss": train_loss, "Train Acc": train_acc,
                    "Val Loss": val_loss, "Val Acc": val_acc, "epoch": epoch + 1})
 
-        # Early stopping
         if val_loss < best_val_loss:
             best_val_loss = val_loss
             best_model_state = model.state_dict()
             patience_counter = 0
         else:
             patience_counter += 1
-            if patience_counter >= patience:
+            if patience_counter >= patience and config.early_stopping:
                 break
 
-    # 모델 저장
     if best_model_state:
         model.load_state_dict(best_model_state)
+
         model_dir = "./finger_printing/checkpoints/checkpoints"
         os.makedirs(model_dir, exist_ok=True)
-        model_path = f"{model_dir}/fp_model_CNNTransformer_{timestamp}.pt"
+        model_path = f"{model_dir}/fp_model_CNN_{timestamp}.pt"
         torch.save(model.state_dict(), model_path)
-        print(f"모델 저장 완료: {model_path}")
+        print(f"✅ 모델 저장 완료: {model_path}")
 
-        # 인코더 저장
         encoder_dir = "./finger_printing/checkpoints/encoders"
         os.makedirs(encoder_dir, exist_ok=True)
         encoder_path = f"{encoder_dir}/encoders_{timestamp}.pkl"
@@ -226,16 +206,36 @@ def train_model(config):
             "location_encoder": location_encoder,
             "mac_encoder": mac_encoder
         }, encoder_path)
-        print(f"인코더 저장 완료: {encoder_path}")
+        print(f"✅ 인코더 저장 완료: {encoder_path}")
 
-        # 정규화 파라미터 저장
         norm_dir = "./finger_printing/checkpoints/norm"
         os.makedirs(norm_dir, exist_ok=True)
         norm_path = f"{norm_dir}/norm_{timestamp}.pkl"
         joblib.dump({"mean": rssi_mean, "std": rssi_std}, norm_path)
-        print(f"정규화 파라미터 저장 완료: {norm_path}")
+        print(f"✅ 정규화 파라미터 저장 완료: {norm_path}")
+        
+    evaluate_model(model, test_loader, location_encoder)
 
+def evaluate_model(model, loader, location_encoder):
+    model.eval()
+    correct, total = 0, 0
+    with torch.no_grad():
+        for rssi, mac, labels in loader:
+            rssi, mac, labels = rssi.to(device), mac.to(
+                device), labels.to(device)
+            _, pred = torch.max(model(rssi, mac), 1)
+            correct += (pred == labels).sum().item()
+            total += labels.size(0)
 
-# ---------- Main 실행 ----------
+    acc = 100 * correct / total
+    print(f"Test Accuracy: {acc:.2f}%")
+    wandb.log({"Test Accuracy": acc})
+    
+# ---------- Main ----------
 if __name__ == "__main__":
-    train_model()
+    import yaml
+    with open("./wandb_sweep_CNN.yaml") as f:
+        sweep_config = yaml.safe_load(f)
+
+    sweep_id = wandb.sweep(sweep_config, project="wifi-fingerprinting")
+    wandb.agent(sweep_id, function=train_model)

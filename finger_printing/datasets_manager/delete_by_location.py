@@ -31,9 +31,9 @@ patterns = [  # 5층 복도
     'hall_5105',
     'hall_toilet5',
     # 5층 화장실
-    'toilet_5'
+    'toilet_5_',
     # 왼쪽 계단
-    'stair_5l',
+    'stair_5l_',
     # 6층 복도
     'hall_6105',
     'hall_6103',
@@ -43,4 +43,4 @@ patterns = [  # 5층 복도
 filtered_df = df[~df['Location'].str.startswith(tuple(patterns))]
 
 # 저장
-filtered_df.to_csv('./finger_printing/datasets/filtered_dataset.csv', index=False)
+filtered_df.to_csv('./finger_printing/datasets/filtered_dataset2.csv', index=False)
