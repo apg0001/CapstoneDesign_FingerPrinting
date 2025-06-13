@@ -21,6 +21,6 @@ parameters:
   epochs:
     value: 250
   scheduler:
-    value: [True, False]
+    values: [True, False]
   early_stopping:
-    value: [False, True]
+    values: [False, True]
