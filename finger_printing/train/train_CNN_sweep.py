@@ -124,7 +124,7 @@ def train_model(config=None):
     optimizer = optim.Adam(model.parameters(), lr=config.learning_rate)
 
     scheduler = None
-    if config.scheduler_enabled:
+    if config.scheduler:
         total_steps = len(train_loader) * config.epochs
         scheduler = get_linear_schedule_with_warmup(optimizer,
                                                     num_warmup_steps=int(0.1 * total_steps),
