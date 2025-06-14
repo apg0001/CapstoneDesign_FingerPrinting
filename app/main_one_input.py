@@ -32,10 +32,16 @@ logger = logging.getLogger(__name__)
 # CONFIG_PATH = "./app/config/hyperparameters_20250608_143837.yaml"
 
 # 데이터 증강 후
-MODEL_PATH = "./finger_printing/checkpoints/checkpoints/fp_model_CNNTransformer_20250605_194159.pt"
-ENCODER_PATH = "./finger_printing/checkpoints/encoders/encoders_20250605_194159.pkl"
-NORM_PATH = "./finger_printing/checkpoints/norm/norm_20250605_194159.pkl"
-CONFIG_PATH = "./finger_printing/config/hyperparameters_20250605_194159.yaml"
+# MODEL_PATH = "./finger_printing/checkpoints/checkpoints/fp_model_CNNTransformer_20250605_194159.pt"
+# ENCODER_PATH = "./finger_printing/checkpoints/encoders/encoders_20250605_194159.pkl"
+# NORM_PATH = "./finger_printing/checkpoints/norm/norm_20250605_194159.pkl"
+# CONFIG_PATH = "./finger_printing/config/hyperparameters_20250605_194159.yaml"
+
+# 일부 데이터 제거 후 증강
+MODEL_PATH = "./app/checkpoints/fp_model_CNNTransformer_20250613_213544.pt"
+ENCODER_PATH = "./app/checkpoints/encoders_20250613_213544.pkl"
+NORM_PATH = "./app/checkpoints/norm_20250613_213544.pkl"
+CONFIG_PATH = "./app/config/hyperparameters_20250613_213544.yaml"
 
 predictor = Predictor(MODEL_PATH, ENCODER_PATH, NORM_PATH, CONFIG_PATH)
 
