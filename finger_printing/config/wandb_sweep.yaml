@@ -50,6 +50,6 @@ parameters:
   scheduler:
     values: [true]
   early_stopping:
-    values: [false]
+    values: [true]
   data_path:
-    value: ./finger_printing/datasets/filtered_dataset_3.0.csv
+    value: ./finger_printing/datasets/filtered_dataset3.0.csv

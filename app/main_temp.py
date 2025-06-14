@@ -4,6 +4,7 @@ from typing import Dict
 import logging
 import traceback
 from .predict import Predictor
+from .predict_temp import Predictor_temp
 # detect_new_macs 함수 별도로 구현 필요
 from .online_trainer import OnlineTrainer, detect_new_macs
 
@@ -55,6 +56,7 @@ NORM_PATH = "./app/checkpoints/norm_20250613_213544.pkl"
 CONFIG_PATH = "./app/config/hyperparameters_20250613_213544.yaml"
 
 predictor = Predictor(MODEL_PATH, ENCODER_PATH, NORM_PATH, CONFIG_PATH)
+predictor_temp = Predictor_temp(MODEL_PATH, ENCODER_PATH, NORM_PATH, CONFIG_PATH)
 
 online_trainer = OnlineTrainer(
     model=predictor.model,
@@ -100,6 +102,10 @@ async def predict_api(input_data: InputData, background_tasks: BackgroundTasks, 
     # logger.info("📄 Raw request body:", body.decode())
     try:
         location, _ = predictor.predict(input_data.mac_rssi)
+        logger.info(f'데이터 3개: location: {location}')
+        
+        location_temp, _ = predictor_temp.predict_temp(input_data.mac_rssi)
+        logger.info(f'데이터 1개: location: {location_temp}')
         # background_tasks.add_task(
         #     background_online_training, input_data.mac_rssi)
         return {"status_code": 200, "message": "Prediction Success!", "predicted_location": str(location)}
