@@ -1,7 +1,0 @@
-{"time":"2025-03-31T00:19:30.772376+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"/Users/gichanpark/Desktop/castone_design/wandb/run-20250331_001930-rz98v1kj/logs/debug-core.log"}
-{"time":"2025-03-31T00:19:30.881851+09:00","level":"INFO","msg":"created new stream","id":"rz98v1kj"}
-{"time":"2025-03-31T00:19:30.881903+09:00","level":"INFO","msg":"stream: started","id":"rz98v1kj"}
-{"time":"2025-03-31T00:19:30.881946+09:00","level":"INFO","msg":"handler: started","stream_id":"rz98v1kj"}
-{"time":"2025-03-31T00:19:30.882093+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"rz98v1kj"}
-{"time":"2025-03-31T00:19:30.882268+09:00","level":"INFO","msg":"sender: started","stream_id":"rz98v1kj"}
-{"time":"2025-03-31T00:19:31.214023+09:00","level":"INFO","msg":"Starting system monitor"}

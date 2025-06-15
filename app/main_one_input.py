@@ -43,6 +43,7 @@ ENCODER_PATH = "./app/checkpoints/encoders_20250613_213544.pkl"
 NORM_PATH = "./app/checkpoints/norm_20250613_213544.pkl"
 CONFIG_PATH = "./app/config/hyperparameters_20250613_213544.yaml"
 
+
 predictor = Predictor(MODEL_PATH, ENCODER_PATH, NORM_PATH, CONFIG_PATH)
 
 online_trainer = OnlineTrainer(

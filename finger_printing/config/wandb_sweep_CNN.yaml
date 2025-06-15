@@ -3,26 +3,50 @@ metric:
   name: Val Acc
   goal: maximize
 
+# parameters:
+#   batch_size:
+#     values: [8, 16, 32]
+#   learning_rate:
+#     values: [0.0001, 0.0005, 0.001]
+#   dropout_rate:
+#     values: [0.2, 0.3, 0.5]
+#   conv1_channels:
+#     values: [16, 32, 64]
+#   conv2_channels:
+#     values: [32, 64, 128]
+#   kernel_size:
+#     values: [3, 5]
+#   padding:
+#     values: [1, 2]
+#   epochs:
+#     value: 250
+#   scheduler:
+#     values: [True, False]
+#   early_stopping:
+#     values: [False, True]
+#   data_path:
+#     value: ./finger_printing/datasets/filtered_dataset2.csv
+
 parameters:
   batch_size:
-    values: [8, 16, 32]
+    values: [8]
   learning_rate:
-    values: [0.0001, 0.0005, 0.001]
+    values: [0.0005]
   dropout_rate:
     values: [0.2, 0.3, 0.5]
   conv1_channels:
-    values: [16, 32, 64]
+    values: [32]
   conv2_channels:
-    values: [32, 64, 128]
+    values: [64]
   kernel_size:
-    values: [3, 5]
+    values: [3]
   padding:
-    values: [1, 2]
+    values: [1]
   epochs:
     value: 250
   scheduler:
-    values: [True, False]
+    values: [True]
   early_stopping:
-    values: [False, True]
+    values: [true]
   data_path:
-    value: ./finger_printing/datasets/filtered_dataset3.0.csv
+    value: ./finger_printing/datasets/filtered_dataset2.csv

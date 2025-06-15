@@ -1,6 +1,0 @@
-{"time":"2025-03-31T14:46:32.946259+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"/Users/gichanpark/Desktop/castone_design/wandb/run-20250331_144632-ui2rkang/logs/debug-core.log"}
-{"time":"2025-03-31T14:46:33.0578+09:00","level":"INFO","msg":"created new stream","id":"ui2rkang"}
-{"time":"2025-03-31T14:46:33.057856+09:00","level":"INFO","msg":"stream: started","id":"ui2rkang"}
-{"time":"2025-03-31T14:46:33.057896+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"ui2rkang"}
-{"time":"2025-03-31T14:46:33.05797+09:00","level":"INFO","msg":"sender: started","stream_id":"ui2rkang"}
-{"time":"2025-03-31T14:46:33.057916+09:00","level":"INFO","msg":"handler: started","stream_id":"ui2rkang"}

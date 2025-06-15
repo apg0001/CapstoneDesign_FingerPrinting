@@ -1,6 +1,0 @@
-Epochs:  22%|█████████████▋                                                | 55/250 [44:22<2:37:21, 48.42s/it]
-
-✅ 모델 저장 완료: ./finger_printing/checkpoints/checkpoints/fp_model_CNNTransformer_20250412_045736.pt
-✅ 인코더 저장 완료: ./finger_printing/checkpoints/encoders/encoders_20250412_045736.pkl
-✅ 정규화 파라미터 저장 완료: ./finger_printing/checkpoints/norm/norm_20250412_045736.pkl
-Test Accuracy: 86.82%

@@ -18,8 +18,8 @@ from transformers import get_linear_schedule_with_warmup
 
 sys.path.append(os.path.abspath(
     os.path.join(os.path.dirname(__file__), "../..")))
-from finger_printing.models.model_CNNTransformer import WifiCNNTransformer
 
+from finger_printing.models.model_CNNTransformer import WifiCNNTransformer
 
 # CUDA 설정
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -54,8 +54,8 @@ def preprocess_data(df, rssi_threshold=-95):
     mac_encoder = LabelEncoder()
     df["mac_encoded"] = mac_encoder.fit_transform(df["MAC"])
 
-    df["rssi_filtered"] = df.groupby(
-        "MAC")["RSSI"].transform(apply_kalman_filter)
+    df["rssi_filtered"] = df.groupby([
+        "MAC", "Location"])["RSSI"].transform(apply_kalman_filter)
     df["rssi_weighted"] = df.groupby("MAC")["rssi_filtered"].transform(
         lambda x: np.average(x, weights=np.abs(x))
     )
@@ -109,6 +109,7 @@ def create_dataset(df, mac_encoder, max_ap=100):
 
 # ---------- 모델 학습 ----------
 
+
 def train_model(config=None):
     with wandb.init(config=config):
         config = wandb.config
@@ -116,7 +117,8 @@ def train_model(config=None):
 
         # 모델 관련 파라미터 계산
         df = pd.read_csv(config.data_path)
-        df, location_encoder, mac_encoder, rssi_mean, rssi_std = preprocess_data(df)
+        df, location_encoder, mac_encoder, rssi_mean, rssi_std = preprocess_data(
+            df)
         X, y = create_dataset(df, mac_encoder)
 
         num_ap = X.shape[1]  # AP 수
@@ -144,12 +146,17 @@ def train_model(config=None):
             yaml.dump(config_dict, f)
 
         # 모델 학습 데이터셋 준비
-        train_X, temp_X, train_y, temp_y = train_test_split(X, y, test_size=0.2)
-        val_X, test_X, val_y, test_y = train_test_split(temp_X, temp_y, test_size=0.5)
+        train_X, temp_X, train_y, temp_y = train_test_split(
+            X, y, test_size=0.2)
+        val_X, test_X, val_y, test_y = train_test_split(
+            temp_X, temp_y, test_size=0.5)
 
-        train_loader = DataLoader(WifiDataset(train_X, train_y), batch_size=config.batch_size, drop_last=True)
-        val_loader = DataLoader(WifiDataset(val_X, val_y), batch_size=config.batch_size, drop_last=True)
-        test_loader = DataLoader(WifiDataset(test_X, test_y), batch_size=config.batch_size, drop_last=True)
+        train_loader = DataLoader(WifiDataset(
+            train_X, train_y), batch_size=config.batch_size, drop_last=True)
+        val_loader = DataLoader(WifiDataset(
+            val_X, val_y), batch_size=config.batch_size, drop_last=True)
+        test_loader = DataLoader(WifiDataset(
+            test_X, test_y), batch_size=config.batch_size, drop_last=True)
 
         # 모델 정의
         model = WifiCNNTransformer(
@@ -184,7 +191,8 @@ def train_model(config=None):
             model.train()
             total_loss, correct, total = 0, 0, 0
             for rssi_batch, mac_batch, labels_batch in train_loader:
-                rssi_batch, mac_batch, labels_batch = rssi_batch.to(device), mac_batch.to(device), labels_batch.to(device)
+                rssi_batch, mac_batch, labels_batch = rssi_batch.to(
+                    device), mac_batch.to(device), labels_batch.to(device)
 
                 optimizer.zero_grad()
                 outputs = model(rssi_batch, mac_batch)
@@ -207,7 +215,8 @@ def train_model(config=None):
             val_loss, val_correct, val_total = 0, 0, 0
             with torch.no_grad():
                 for rssi_val, mac_val, labels_val in val_loader:
-                    rssi_val, mac_val, labels_val = rssi_val.to(device), mac_val.to(device), labels_val.to(device)
+                    rssi_val, mac_val, labels_val = rssi_val.to(
+                        device), mac_val.to(device), labels_val.to(device)
                     outputs = model(rssi_val, mac_val)
                     loss = criterion(outputs, labels_val)
                     val_loss += loss.item()

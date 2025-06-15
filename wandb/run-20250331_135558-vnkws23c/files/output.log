@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/gichanpark/Desktop/castone_design/finger_printing/train_CNNTransformer_sweep.py", line 132, in train_model
-    model = WifiCNNTransformer(
-TypeError: __init__() got an unexpected keyword argument 'input_len'
